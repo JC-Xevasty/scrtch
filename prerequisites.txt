@@ -1,0 +1,6 @@
+
+authentication -> sign in /providers -> Auth providers -> email ->
+toggle on 
+    - enable email provider
+    - secure emial change
+    - requre current password 

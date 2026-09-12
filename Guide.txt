@@ -1,0 +1,181 @@
+1. Create workspace
+	npm create vite@latest <workspace_name>
+
+2. Install dependencies
+	yarn install
+
+3. Reset workspace/remove boilerplate
+	Delete index.css
+	Delete assets/images
+	Create style/reset.css and import in main.tsx
+		*, *::before, *::after {
+  		  box-sizing: border-box;
+		}
+
+		body {
+		  margin: 0;
+		  padding: 0;
+		  font-family: sans-serif;
+		}
+	Clear App.css and App.tsx
+
+4. Setup navigation
+	Install react-router-dom
+	In main.tsx wrap App component with BrowserRouter
+	In App.tsx setup Routes and Route components
+	Create pages folder and Page components
+
+5. Setup <head> configuration hook
+	import { useEffect } from "react";
+
+    interface PropTypes {
+        title?: string;
+        description?: string;
+        bodyClass?: string;
+    }
+
+    const useHead = ({
+        title = "Scratch Pad",
+        description,
+        bodyClass,
+    }: PropTypes) => {
+        useEffect(() => {
+            if (title) {
+                document.title =
+                    title !== "Scratch Pad" ? `${title} | Scratch Pad` : title;
+            }
+
+            // Handle Meta Description
+            if (description) {
+                let metaDesc = document.querySelector('meta[name="description"]');
+                if (!metaDesc) {
+                    metaDesc = document.createElement("meta");
+                    metaDesc.setAttribute("name", "description");
+                    document.head.appendChild(metaDesc);
+                }
+                metaDesc.setAttribute("content", description);
+            }
+
+            // Handle Body Class (e.g., for different page backgrounds)
+            if (bodyClass) {
+                document.body.classList.add(bodyClass);
+                return () => document.body.classList.remove(bodyClass);
+            }
+        }, [title, description, bodyClass]);
+    };
+
+    export default useHead;
+
+	Usage: useHead({ title, description, bodyClass });
+
+6. Setup tailwindcss
+    Install dev dependencies    
+        yarn add --dev tailwindcss @tailwindcss/postcss autoprefixer
+    Initialize tailwind.config.js and postcss.config.js
+        npx tailwindcss init -p
+    Create tailwind.config.js
+        /** @type {import('tailwindcss').Config} */
+        export default {
+            content: [
+                "./index.html",
+                "./src/**/*.{js,ts,jsx,tsx}",
+            ],
+            theme: {
+                extend: {},
+            },
+            plugins: [],
+        }
+    Create postcss.config.js
+        export default {
+            plugins: {
+                "@tailwindcss/postcss": {},
+                autoprefixer: {},
+            },
+        };
+    Create style/global.css
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+
+
+
+old text block
+import { useEffect, useRef } from "react";
+
+interface PropTypes {
+    index?: number;
+    inputSize?: "sm" | "md" | "lg";
+    className?: string;
+    value?: string;
+    placeholder?: string;
+    disabled?: boolean;
+    onChange: (newValue: string) => void;
+}
+
+const BASESTYLES =
+    "bg-background-1 border border-background-3 text-foreground-primary whitespace-pre-wrap rounded-md min-h-9 " +
+    "before:content-[attr(data-placeholder)] before:text-foreground-secondary/50 before:absolute empty:before:block before:hidden " + // placeholder
+    "outline-none focus:ring-0 focus:ring-accent focus:border-accent transition-all";
+
+const SIZES = {
+    sm: "text-xs px-4 py-1.5",
+    md: "text-sm px-4 py-2",
+    lg: "text-base px-4 py-2.5",
+};
+
+const TextBlock = ({
+    inputSize = "md",
+    className = "",
+    value = "",
+    placeholder = "",
+    disabled = false,
+    onChange,
+    ...props
+}: PropTypes) => {
+    const blockRef = useRef<HTMLDivElement>(null);
+
+    // This is for when the value changes outside this component
+    useEffect(() => {
+        if (!blockRef.current) return;
+
+        // Force a total wipe if value is empty (Removes the <br />)
+        if (value.trim().length === 0 && blockRef.current.innerHTML !== "") {
+            blockRef.current.innerHTML = "";
+            return;
+        }
+
+        if (value !== blockRef.current.innerText) {
+            blockRef.current.innerText = value;
+        }
+    }, [value]);
+
+    // This handles the "Paste" event
+    const handlePaste = (e: React.ClipboardEvent) => {
+        if (disabled) return;
+        e.preventDefault();
+        // Get only the raw text from the clipboard
+        const text = e.clipboardData.getData("text/plain");
+        // Manually insert it at the cursor position
+        document.execCommand("insertText", false, text);
+    };
+
+    return (
+        <div
+            ref={blockRef}
+            className={`${BASESTYLES} ${SIZES[inputSize]} ${className}`}
+            contentEditable={disabled ? "false" : "plaintext-only"}
+            role="textbox"
+            data-placeholder={placeholder}
+            onInput={(e) => {
+                if (disabled) return;
+                const text = e.currentTarget.innerText;
+                // Cleans up the "phantom" newline browsers sometimes add to the end of divs
+                onChange(text.replace(/\n$/, ""));
+            }}
+            onPaste={handlePaste}
+            {...props}
+        />
+    );
+};
+export default TextBlock;

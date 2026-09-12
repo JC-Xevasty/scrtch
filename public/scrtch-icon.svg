@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 18 18" color="#FFF">
+    <defs>
+        <filter id="darken-50">
+            <feColorMatrix type="matrix" values="0.5 0   0   0 0
+                                                 0   0.5 0   0 0
+                                                 0   0   0.5 0 0
+                                                 0   0   0   1 0" />
+        </filter>
+
+        <filter id="fold-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="0" stdDeviation="0.75" flood-color="black" flood-opacity="0.75"/>
+        </filter>
+    </defs>
+
+    <path d="
+        M 0,1 L 0,15 
+        A 1 1 0 0 0 1,16 
+        L 15,16
+        A 1 1 0 0 0 16,15
+        L 16,1 
+        A 1 1 0 0 0 15,0
+        L 1,0
+        A 1 1 0 0 0 0,1
+    " fill="currentColor" filter="url(#darken-50)" />
+
+    <path d="
+        M 4,1.5 L 4,12 L 14.5,12
+        L 14.5,10
+        C 14.5,9 7,1.5 6,1.5
+        L 4,1.5
+    " fill="none" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" />
+
+    <path d="
+        M 2,0 
+        Q 3,0 3,12 
+        A 1 1 0 0 0 4,13
+        Q 16,13 16,14
+        C 16,13 3,0 2,0
+    " fill="currentColor" filter="url(#fold-shadow)"/>
+
+    <path d="
+        M 6,1.5
+        Q 7,1.5 7,8
+        A 1 1 0 0 0 8,9
+        Q 14.5,9 14.5,10
+        C 14.5,9 7,1.5 6,1.5
+    " fill="currentColor" filter="url(#fold-shadow)"/>
+
+    <path d="
+        M 6,1.5
+        Q 7,1.5 7,8
+        A 1 1 0 0 0 8,9
+        Q 14.5,9 14.5,10
+        C 14.5,9 7,1.5 6,1.5
+    " fill="none" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" />
+
+</svg>

@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../assets/fonts/Inter-Variable.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../assets/fonts/Inter-Italic-Variable.ttf") format("truetype");
+}
+
+@theme {
+    --font-brand: "Inter", sans-serif;
+    --color-background-0: var(--background-0);
+    --color-background-1: var(--background-1);
+    --color-background-2: var(--background-2);
+    --color-background-3: var(--background-3);
+    --color-foreground-primary: var(--foreground-1);
+    --color-foreground-secondary: var(--foreground-2);
+    --color-foreground-muted: var(--foreground-3);
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-active: var(--accent-active);
+    --color-accent-soft: var(--accent-soft);
+    --color-success: var(--success);
+    --color-success-soft: var(--success-soft);
+    --color-error: var(--error);
+    --color-error-soft: var(--error-soft);
+}
+
+/* 
+ * :root - default
+ * [data-theme="light"] - explicit overrides
+ */
+:root,
+[data-theme="light"] {
+    --background-0: #f9fafb;
+    --background-1: #ffffff;
+    --background-2: #f3f4f6;
+    --background-3: #e5e7eb;
+    --foreground-1: #121212;
+    --foreground-2: #4b5563; /* tailwind gray-600 */
+    --foreground-3: #9ca3af; /* tailwind gray-400 */
+    --accent: #ea580c; /* Deep, weighted orange */
+    --accent-hover: #c2410c; /* Orange-700 */
+    --accent-active: #9a3412; /* Orange-800 */
+    --accent-soft: #f7eae2;
+    --success: #16a34a; /* Emerald-600 */
+    --success-soft: #f0fdf4; /* Emerald-50 */
+    --error: #dc2626; /* Red-600 */
+    --error-soft: #fef2f2; /* Red-50 */
+}
+
+/* Explicit override */
+[data-theme="dark"] {
+    --background-0: #121212;
+    --background-1: #1e1e1e;
+    --background-2: #2a2a2a;
+    --background-3: #333333;
+    --foreground-1: #f3f4f6; /* gray-100 */
+    --foreground-2: #9ca3af; /* gray-400 */
+    --foreground-3: #6b7280; /* gray-500 */
+    --accent: #f97316; /* Bright, vibrant orange */
+    --accent-hover: #fb923c; /* Orange-400 (Brighter) */
+    --accent-active: #fdba74; /* Orange-300 */
+    --accent-soft: #291b12;
+    --success: #22c55e; /* Emerald-500 */
+    --success-soft: #0b1610;
+    --error: #ef4444; /* Red-500 */
+    --error-soft: #180e0e;
+}
+
+@layer base {
+    :root {
+        /* scrollbar-color: <thumb-color> <track-color> */
+        scrollbar-color: var(--color-background-3) var(--color-background-0);
+        scrollbar-width: thin;
+    }
+
+    /* Webkit support (Chrome, Safari, Edge) for finer control */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-background-0);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-background-3);
+        border-radius: 10px;
+        border: 2px solid var(--color-background-0); /* Creates a "padding" effect */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-foreground-3);
+    }
+}
+
+main {
+    background-color: var(--color-background-0);
+    transition: background-color 0.3s ease;
+}
+
+body,
+main,
+header,
+nav,
+h1,
+h2 {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.bg-background-0,
+.bg-background-1,
+.bg-background-2,
+.divider {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.dot-grid {
+    background: radial-gradient(var(--color-background-3) 2px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+.sidebar {
+    transition: border-color 0.3s ease;
+}
+
+button:not([disabled]) {
+    cursor: pointer;
+}
+
+/* TOAST */
+.toast-container .toast-item {
+    animation: toastSlideIn 0.3s ease-out forwards;
+}
+
+.toast-container .toast-item.toast-exit {
+    animation: toastFadeOut 0.5s ease-out forwards;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes toastFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
