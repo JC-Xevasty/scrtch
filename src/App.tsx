@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import "./App.css";
 
 import NotFound from "./pages/NotFound";
@@ -33,6 +33,8 @@ import AuthProvider from "./context/auth/AuthProvider";
 import VerifyEmail from "./pages/auth/VerifyEmail";
 import VerifyEmailChange from "./pages/dashboard/profile/VerifyEmailChange";
 
+const ALLOW_REGISTRATION = import.meta.env.VITE_ALLOW_REGISTRATION === true;
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -54,7 +56,10 @@ const router = createBrowserRouter([
                 element: <AuthLayout />,
                 children: [
                     { path: "login", element: <Login /> },
-                    { path: "register", element: <Register /> },
+                    {
+                        path: "register",
+                        element: ALLOW_REGISTRATION ? <Register /> : <Navigate to="/login" replace />,
+                    },
                     { path: "forgot-password", element: <ForgotPassword /> },
                     { path: "verify-email", element: <VerifyEmail /> },
                     { path: "reset-password", element: <ResetPassword /> },

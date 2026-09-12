@@ -28,11 +28,11 @@ const Login = () => {
             const { user, profile } = await signIn(email, password);
 
             setLoading(false);
-            
+
             // Redirect to default home
             setUser(user);
             setProfile(profile);
-            
+
             // Set auth states
             setTimeout(() => {
                 const { home, theme } = profile;
@@ -86,16 +86,18 @@ const Login = () => {
                 Forgot Password?
             </LinkText>
 
-            <TextButton type="submit" variant="primary" className="w-full my-4" disabled={loading}>
+            <TextButton type="submit" variant="primary" className="w-full mt-4" disabled={loading}>
                 Sign In
             </TextButton>
 
-            <p className="text-center text-sm">
-                Don't have an account?{" "}
-                <LinkText to="/register" disabled={loading}>
-                    Register
-                </LinkText>
-            </p>
+            {import.meta.env.VITE_ALLOW_REGISTRATION === true && (
+                <p className="text-center text-sm mt-4">
+                    Don't have an account?{" "}
+                    <LinkText to="/register" disabled={loading}>
+                        Register
+                    </LinkText>
+                </p>
+            )}
         </form>
     );
 };
