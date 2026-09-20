@@ -1,5 +1,5 @@
-import type { Log, LogCreate, LogDetail, LogRecordUpdate, LogUpdate } from "../types";
 import { supabase } from "../utils/supabase";
+import type { Log, LogCreate, LogDetail, LogRecordUpdate, LogUpdate } from "../types";
 
 /* Fetch all logs which belongs to the authenticated user */
 export const fetchLogCollection = async (): Promise<Log[]> => {

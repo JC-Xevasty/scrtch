@@ -1,5 +1,5 @@
-import type { Group, GroupContent, GroupCreate, GroupDelete, GroupUpdate } from "../types";
 import { supabase } from "../utils/supabase";
+import type { Group, GroupContent, GroupCreate, GroupDelete, GroupUpdate } from "../types";
 
 
 /* Fetch all groups which belongs to the authenticated user */

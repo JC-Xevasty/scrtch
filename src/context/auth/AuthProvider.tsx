@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import type { User } from "@supabase/supabase-js";
-import { getSession, getUserProfile } from "../../services/auth";
+
 import { useToast } from "../toast/ToastContext";
 import { AuthContext, type UserProfile } from "./AuthContext";
+
+import { getSession, getUserProfile } from "../../services/auth";
+
+import type { User } from "@supabase/supabase-js";
+
 import { supabase } from "../../utils/supabase";
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {

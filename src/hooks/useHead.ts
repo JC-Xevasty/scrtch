@@ -7,7 +7,7 @@ interface PropTypes {
 }
 
 const useHead = ({
-    title = "Scratch Pad",
+    title = "scrtch",
     description,
     bodyClass,
 }: PropTypes) => {

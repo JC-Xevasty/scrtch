@@ -1,5 +1,5 @@
-import type { List, ListCreate, ListDetail, ListRecordUpdate, ListUpdate } from "../types";
 import { supabase } from "../utils/supabase";
+import type { List, ListCreate, ListDetail, ListRecordUpdate, ListUpdate } from "../types";
 
 /* Fetch all lists which belongs to the authenticated user */
 export const fetchListCollection = async (): Promise<List[]> => {

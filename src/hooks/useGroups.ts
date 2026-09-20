@@ -94,11 +94,6 @@ export const useGroupMutation = () => {
         }
     });
 
-    /* 
-        JCTODO: LOADING ANIMATION
-        INFORMATION ICON
-     */
-
     const deleteMutation = useMutation<void, MutationError, GroupDelete, { previousGroup?: GroupContent }>({
         mutationFn: deleteGroup,
         onMutate: async (variables) => {

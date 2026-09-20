@@ -1,5 +1,5 @@
-import type { Note, NoteCreate, NoteUpdate } from "../types";
 import { supabase } from "../utils/supabase";
+import type { Note, NoteCreate, NoteUpdate } from "../types";
 
 /* Fetch all notes which belongs to the authenticated user */
 export const fetchNoteCollection = async (): Promise<Note[]> => {

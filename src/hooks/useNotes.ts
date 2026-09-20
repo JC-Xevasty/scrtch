@@ -119,7 +119,6 @@ export const useNoteMutation = () => {
         }
     })
 
-
     return {
         createNote: createMutation.mutateAsync,
         isCreating: createMutation.isPending,

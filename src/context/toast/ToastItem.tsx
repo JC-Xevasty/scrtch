@@ -33,4 +33,5 @@ const ToastItem = ({ message, type, isExiting, handleClose }: Toast & { handleCl
         </div>
     );
 };
+
 export default ToastItem;

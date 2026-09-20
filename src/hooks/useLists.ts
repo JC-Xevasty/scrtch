@@ -14,7 +14,6 @@ export const useLists = () => useQuery<List[], MutationError>({
     gcTime: Infinity
 })
 
-
 /* 
  * Usage: const { data, isLoading, error } = useList(id);
  */

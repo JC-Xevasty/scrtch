@@ -1,5 +1,5 @@
-import type { Content, DashboardCleanupStats, DashboardPinnedItems, DashboardStats, Group } from "../types";
 import { supabase } from "../utils/supabase";
+import type { Content, DashboardCleanupStats, DashboardPinnedItems, DashboardStats, Group } from "../types";
 
 export const fetchDashboardStats = async (): Promise<DashboardStats> => {
     const { data, error } = await supabase.rpc("get_dashboard_stats");

@@ -1,11 +1,13 @@
-import type { User } from "@supabase/supabase-js";
 import { createContext, useContext } from "react";
+
+import type { User } from "@supabase/supabase-js";
+
 import type { ThemeMode } from "../theme/ThemeContext";
 
 interface UserProfile {
     theme: ThemeMode;
     home: "home" | "groups" | "notes" | "lists" | "logs" | "links";
-    post_save_action: "view" | "stay"
+    post_save_action: "view" | "stay";
 }
 
 interface AuthContextType {

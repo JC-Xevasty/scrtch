@@ -8,8 +8,6 @@ export type ButtonVariant =
     | "neutral"
     | "neutral-ghost";
 
-
-
 export type PopoverPosition = "top" | "bottom" | "left" | "right";
 export type PopoverVerticalAlign = "top" | "center" | "bottom";
 export type PopoverHorizontalAlign = "left" | "center" | "right";
@@ -220,47 +218,3 @@ export interface DashboardPinnedItems {
     content: Content[];
     groups: Group[];
 }
-
-/* 
-export interface Database {
-  public: {
-    Tables: {
-      notes: {
-        // 1. The SELECT standard (equivalent to your core Note)
-        Row: {
-          id: string
-          title: string
-          content: string
-          is_pinned: boolean
-          group_id: string | null
-          user_id: string
-          created_at: string
-          updated_at: string
-        }
-        // 2. The INSERT standard (All fields generated/defaulted by DB are optional!)
-        Insert: {
-          id?: string            // Optional: DB generates UUID
-          title: string          // Required
-          content?: string       // Optional: DB defaults to ''
-          is_pinned?: boolean    // Optional: DB defaults to false
-          group_id?: string | null 
-          user_id?: string       // Optional: DB defaults to auth.uid()
-          created_at?: string    // Optional: DB defaults to now()
-          updated_at?: string    // Optional: DB defaults to now()
-        }
-        // 3. The UPDATE standard (Every single field is optional)
-        Update: {
-          id?: string
-          title?: string
-          content?: string
-          is_pinned?: boolean
-          group_id?: string | null
-          user_id?: string
-          created_at?: string
-          updated_at?: string
-        }
-      }
-    }
-  }
-}
-*/

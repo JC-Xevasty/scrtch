@@ -1,6 +1,6 @@
 
-import type { Link, LinkCreate, LinkDelete, LinkFolder, LinkUpdate } from "../types";
 import { supabase } from "../utils/supabase";
+import type { Link, LinkCreate, LinkDelete, LinkFolder, LinkUpdate } from "../types";
 
 export const fetchLinksByFolder = async (folder_id: Link["folder_id"]): Promise<LinkFolder> => {
     const { data, error } = await supabase.rpc("get_link_folder_data", {
