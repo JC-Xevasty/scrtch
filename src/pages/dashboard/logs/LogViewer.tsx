@@ -55,7 +55,7 @@ const LogItem = ({ title, content, entry_date }: Pick<LogItem, "title" | "conten
                             onClick={() => setShowContent((prev) => !prev)}
                         />
                         <div className="grow bg-background-3 border border-white/20 shadow-sm rounded-md p-4 ">
-                            {title}
+                            {content}
                         </div>
                     </div>
                 </>
