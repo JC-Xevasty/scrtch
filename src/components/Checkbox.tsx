@@ -28,4 +28,5 @@ const Checkbox = ({ inputSize = "md", label, className = "", ...props }: Checkbo
         </label>
     );
 };
+
 export default Checkbox;

@@ -45,6 +45,5 @@ export const DateFormat = {
     localString: (dateString: string, locale: Intl.LocalesArgument = "en-US", options: Intl.DateTimeFormatOptions = {}) => {
         const date = new Date(dateString);
         return date.toLocaleString(locale, options);
-        return date.toLocaleDateString(locale, options)
     }
 }

@@ -1,15 +1,19 @@
 import React, { useMemo, useState } from "react";
-import type { LinkItemUpdate, Link, LinkItemType, LinkCreate, LinkUpdate, LinkDelete } from "../../../types";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import TextButton from "../../../components/TextButton";
 import Icon from "../../../components/Icon";
 import Popover from "../../../components/Popover";
 import Modal from "../../../components/Modal";
 import FieldLabel from "../../../components/FieldLabel";
 import TextInput from "../../../components/TextInput";
+
 import LinksItem from "./LinkItem";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useLinkMutation, useLinks } from "../../../hooks/useLinks";
+
+import type { LinkItemUpdate, Link, LinkItemType, LinkCreate, LinkUpdate, LinkDelete } from "../../../types";
+
 import { useToast } from "../../../context/toast/ToastContext";
+import { useLinkMutation, useLinks } from "../../../hooks/useLinks";
 
 type LinkModalType = "add" | "edit" | "delete";
 
@@ -182,7 +186,6 @@ const LinksManager = () => {
             }
         }
 
-        // TODO: Check if valid url
         if (linkForm.item_type === "link" && (linkForm.href === null || linkForm.href.trim().length === 0)) {
             valid = false;
             showToast("Link URL required.", "error");

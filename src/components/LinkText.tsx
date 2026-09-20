@@ -23,4 +23,5 @@ const LinkText = ({ className = "", children, disabled = false, ...props }: Prop
         </Link>
     );
 };
+
 export default LinkText;

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth/AuthContext";
+
 import TextButton from "../TextButton";
 import Logo from "../Logo";
 
@@ -25,4 +26,5 @@ const HomeNavbar = () => {
         </header>
     );
 };
+
 export default HomeNavbar;

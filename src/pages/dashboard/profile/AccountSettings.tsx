@@ -1,18 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import FieldLabel from "../../../components/FieldLabel";
 import TextInput from "../../../components/TextInput";
 import TextButton from "../../../components/TextButton";
-import { deleteAccount, signOut, updateEmail, updatePassword, updateUserProfile } from "../../../services/auth";
-import { useToast } from "../../../context/toast/ToastContext";
-import useHead from "../../../hooks/useHead";
-import { type User } from "@supabase/supabase-js";
-import { useAuth, type UserProfile } from "../../../context/auth/AuthContext";
 import Dropdown from "../../../components/Dropdown";
-import { useTheme, type ThemeMode } from "../../../context/theme/ThemeContext";
 import Modal from "../../../components/Modal";
-import { useNavigate } from "react-router-dom";
+
+import { type User } from "@supabase/supabase-js";
+
+import useHead from "../../../hooks/useHead";
+import { useToast } from "../../../context/toast/ToastContext";
+import { useAuth, type UserProfile } from "../../../context/auth/AuthContext";
+import { useTheme, type ThemeMode } from "../../../context/theme/ThemeContext";
 import { useAccountMutation } from "../../../hooks/useAccount";
 import { useQueryClient } from "@tanstack/react-query";
+
+import { deleteAccount, signOut, updateEmail, updatePassword, updateUserProfile } from "../../../services/auth";
 
 const THEMEOPTIONS = [
     { id: "light", value: "light", text: "Light" },

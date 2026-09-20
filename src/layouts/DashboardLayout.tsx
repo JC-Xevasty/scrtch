@@ -1,9 +1,12 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import DashboardNavbar from "../components/navigation/DashboardNavbar";
-import "../style/dashboard.css";
-import DashboardSidebar from "../components/navigation/DashboardSidebar";
 import { useEffect } from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+
+import DashboardNavbar from "../components/navigation/DashboardNavbar";
+import DashboardSidebar from "../components/navigation/DashboardSidebar";
+
 import { useAuth } from "../context/auth/AuthContext";
+
+import "../style/dashboard.css";
 
 const DashboardLayout = () => {
     const location = useLocation();
@@ -32,4 +35,5 @@ const DashboardLayout = () => {
         </div>
     );
 };
+
 export default DashboardLayout;

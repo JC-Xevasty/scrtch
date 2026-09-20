@@ -1,14 +1,18 @@
 import { useMemo, useState } from "react";
+
+import Icon from "../../../components/Icon";
+import Popover from "../../../components/Popover";
+
+import ContentGridItem from "../../../components/dashboard/ContentGroupItem";
+import ContentListItem from "../../../components/dashboard/ContentListItem";
+import GroupSelector from "../../../components/dashboard/GroupSelector";
+
+import type { Content } from "../../../types";
+
+import { useToast } from "../../../context/toast/ToastContext";
 import { useListMutation } from "../../../hooks/useLists";
 import { useLogMutation } from "../../../hooks/useLogs";
 import { useNoteMutation } from "../../../hooks/useNotes";
-import type { Content } from "../../../types";
-import { useToast } from "../../../context/toast/ToastContext";
-import ContentGridItem from "../../../components/dashboard/ContentGroupItem";
-import Icon from "../../../components/Icon";
-import ContentListItem from "../../../components/dashboard/ContentListItem";
-import Popover from "../../../components/Popover";
-import GroupSelector from "../../../components/dashboard/GroupSelector";
 
 const ItemsTypePill = ({
     label,
@@ -39,6 +43,7 @@ interface GroupContentProps {
 
 const GroupContent = ({ isLoading, items }: GroupContentProps) => {
     const { showToast } = useToast();
+
     // Initialize all contents of group
     const groupContent = useMemo(() => {
         if (!items) return [];
@@ -171,8 +176,6 @@ const GroupContent = ({ isLoading, items }: GroupContentProps) => {
                     <div className="mb-4 flex flex-row justify-between items-center">
                         <h2 className="font-medium select-none">All Items</h2>
                         <div className="flex items-center gap-2">
-                            {/* TODO: ADD SEARCH */}
-                            {/* TODO: ADD SORT */}
                             <div onClick={() => setView("list")}>
                                 <Icon
                                     name="view-list"
@@ -345,4 +348,5 @@ const GroupContent = ({ isLoading, items }: GroupContentProps) => {
         </div>
     );
 };
+
 export default GroupContent;

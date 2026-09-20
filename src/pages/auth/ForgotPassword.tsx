@@ -1,11 +1,14 @@
 import { useState } from "react";
+
 import FieldLabel from "../../components/FieldLabel";
 import LinkText from "../../components/LinkText";
 import TextButton from "../../components/TextButton";
 import TextInput from "../../components/TextInput";
-import useHead from "../../hooks/useHead";
-import { requestPasswordResetEmail } from "../../services/auth";
+
 import { useToast } from "../../context/toast/ToastContext";
+import useHead from "../../hooks/useHead";
+
+import { requestPasswordResetEmail } from "../../services/auth";
 
 const ForgotPassword = () => {
     useHead({ title: "Forgot Password" });
@@ -63,4 +66,5 @@ const ForgotPassword = () => {
         </form>
     );
 };
+
 export default ForgotPassword;

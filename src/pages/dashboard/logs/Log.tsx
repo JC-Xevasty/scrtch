@@ -17,7 +17,7 @@ const Log = () => {
     if (id === "new" && mode !== undefined) {
         return <Navigate to={`/logs/new`} state={location.state} replace />;
     }
-    
+
     return mode === "view" ? <LogViewer id={id} /> : <LogEditor id={id} />;
 };
 

@@ -15,17 +15,8 @@ const SIZES = {
     lg: "text-base px-4 py-2.5",
 };
 
-const TextInput = ({
-    inputSize = "md",
-    className = "",
-    ...props
-}: PropTypes) => {
-    return (
-        <input
-            className={`${BASESTYLES} ${SIZES[inputSize]} ${className}`}
-            {...props}
-        />
-    );
+const TextInput = ({ inputSize = "md", className = "", ...props }: PropTypes) => {
+    return <input className={`${BASESTYLES} ${SIZES[inputSize]} ${className}`} {...props} />;
 };
 
 export default TextInput;

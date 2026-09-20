@@ -1,13 +1,17 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Modal from "../../../components/Modal";
-import Icon from "../../../components/Icon";
-import type { LogItem } from "../../../types";
-import { DateFormat } from "../../../utils/helpers";
-import { useLog, useLogMutation } from "../../../hooks/useLogs";
-import { useToast } from "../../../context/toast/ToastContext";
+
 import GroupSelector from "../../../components/dashboard/GroupSelector";
+
+import type { LogItem } from "../../../types";
+import { useToast } from "../../../context/toast/ToastContext";
+import { useLog, useLogMutation } from "../../../hooks/useLogs";
+
+import { DateFormat } from "../../../utils/helpers";
 
 const LogItem = ({ title, content, entry_date }: Pick<LogItem, "title" | "content" | "entry_date">) => {
     const [showContent, setShowContent] = useState(false);

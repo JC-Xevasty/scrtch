@@ -1,9 +1,12 @@
 import { useState, type ReactNode } from "react";
+
+import FieldLabel from "../FieldLabel";
+import Modal from "../Modal";
+
+import type { List, Log, Note } from "../../types";
+
 import { useGroups } from "../../hooks/useGroups";
 import { useToast } from "../../context/toast/ToastContext";
-import type { List, Log, Note } from "../../types";
-import Modal from "../Modal";
-import FieldLabel from "../FieldLabel";
 
 interface GroupSelectorProps {
     contentId: string;

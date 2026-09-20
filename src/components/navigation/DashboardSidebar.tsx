@@ -1,19 +1,10 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import Icon from "../Icon";
 import Divider from "../Divider";
 
-const SidebarLink = ({
-    active,
-    url,
-    icon,
-    label,
-}: {
-    active?: boolean;
-    url: string;
-    icon: string;
-    label: string;
-}) => {
+const SidebarLink = ({ active, url, icon, label }: { active?: boolean; url: string; icon: string; label: string }) => {
     return (
         <Link
             to={url}
@@ -43,49 +34,17 @@ const DashboardSidebar = () => {
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
     return (
-        <div
-            className={`h-full ${isSidebarExpanded ? "w-50" : "w-14"} transition-[width] duration-300 ease-in-out`}
-        >
+        <div className={`h-full ${isSidebarExpanded ? "w-50" : "w-14"} transition-[width] duration-300 ease-in-out`}>
             <div className="h-full p-2 flex flex-col justify-between overflow-hidden">
                 <nav>
-                    <SidebarLink
-                        active={mainPath === "dashboard"}
-                        url="/dashboard"
-                        icon="home"
-                        label="Home"
-                    />
+                    <SidebarLink active={mainPath === "dashboard"} url="/dashboard" icon="home" label="Home" />
                     <Divider />
                     <div className="space-y-1">
-                        <SidebarLink
-                            active={mainPath === "groups"}
-                            url="/groups"
-                            icon="folder"
-                            label="Groups"
-                        />
-                        <SidebarLink
-                            active={mainPath === "notes"}
-                            url="/notes"
-                            icon="note"
-                            label="Notes"
-                        />
-                        <SidebarLink
-                            active={mainPath === "lists"}
-                            url="/lists"
-                            icon="list"
-                            label="Lists"
-                        />
-                        <SidebarLink
-                            active={mainPath === "logs"}
-                            url="/logs"
-                            icon="calendar-plus"
-                            label="Logs"
-                        />
-                        <SidebarLink
-                            active={mainPath === "links"}
-                            url="/links"
-                            icon="globe"
-                            label="Links"
-                        />
+                        <SidebarLink active={mainPath === "groups"} url="/groups" icon="folder" label="Groups" />
+                        <SidebarLink active={mainPath === "notes"} url="/notes" icon="note" label="Notes" />
+                        <SidebarLink active={mainPath === "lists"} url="/lists" icon="list" label="Lists" />
+                        <SidebarLink active={mainPath === "logs"} url="/logs" icon="calendar-plus" label="Logs" />
+                        <SidebarLink active={mainPath === "links"} url="/links" icon="globe" label="Links" />
                     </div>
                 </nav>
                 <div
@@ -95,13 +54,12 @@ const DashboardSidebar = () => {
                     <Icon
                         name="sidebar"
                         className="cursor-pointer"
-                        color={
-                            !isSidebarExpanded ? "text-foreground-muted" : ""
-                        }
+                        color={!isSidebarExpanded ? "text-foreground-muted" : ""}
                     />
                 </div>
             </div>
         </div>
     );
 };
+
 export default DashboardSidebar;

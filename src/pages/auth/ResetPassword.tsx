@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import FieldLabel from "../../components/FieldLabel";
 import LinkText from "../../components/LinkText";
 import TextButton from "../../components/TextButton";
 import TextInput from "../../components/TextInput";
+
 import useHead from "../../hooks/useHead";
 import { useToast } from "../../context/toast/ToastContext";
-import { resetPassword, signOut, verifyTokenHash } from "../../services/auth";
 import { useAuth } from "../../context/auth/AuthContext";
-import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { resetPassword, signOut, verifyTokenHash } from "../../services/auth";
 
 const ResetPassword = () => {
     useHead({ title: "Reset Password" });

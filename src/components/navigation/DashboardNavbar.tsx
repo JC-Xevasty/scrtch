@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useTheme, type ThemeMode } from "../../context/theme/ThemeContext";
+
 import Icon from "../Icon";
 import Divider from "../Divider";
-import { signOut } from "../../services/auth";
-import { useAuth } from "../../context/auth/AuthContext";
-import { useQueryClient } from "@tanstack/react-query";
 import Logo from "../Logo";
+
+import { useQueryClient } from "@tanstack/react-query";
+import { useAuth } from "../../context/auth/AuthContext";
+import { useTheme, type ThemeMode } from "../../context/theme/ThemeContext";
+import { useToast } from "../../context/toast/ToastContext";
+
+import { signOut } from "../../services/auth";
 
 const ThemeSelector = ({ targetTheme }: { targetTheme: ThemeMode }) => {
     const { theme, setTheme } = useTheme();
@@ -21,13 +25,7 @@ const ThemeSelector = ({ targetTheme }: { targetTheme: ThemeMode }) => {
                         ? "font-semibold cursor-default capitalize"
                         : "cursor-pointer capitalize hover:opacity-70"
                 }
-                onClick={
-                    isSelected
-                        ? undefined
-                        : () => {
-                              setTheme(targetTheme);
-                          }
-                }
+                onClick={isSelected ? undefined : () => setTheme(targetTheme)}
             >
                 {targetTheme}
             </p>
@@ -40,7 +38,10 @@ const DashboardNavbar = () => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
     const { user } = useAuth();
+    const { showToast } = useToast();
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
     const popupRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -72,9 +73,9 @@ const DashboardNavbar = () => {
             queryClient.clear();
             navigate("/login", { replace: true });
         } catch (error) {
-            console.log(error);
+            showToast("Failed to sign out", "error");
         }
-        // Other logic
+
         setIsOpen(false);
     };
 

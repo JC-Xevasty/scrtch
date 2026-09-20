@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import Icon from "../../../components/Icon";
 import TextButton from "../../../components/TextButton";
 import TextInput from "../../../components/TextInput";
 import FieldLabel from "../../../components/FieldLabel";
 import TextBlock from "../../../components/TextBlock";
+
+import type { NoteCreate, NoteUpdate } from "../../../types";
+
 import { useToast } from "../../../context/toast/ToastContext";
 import { useNote, useNoteMutation } from "../../../hooks/useNotes";
-import type { NoteCreate, NoteUpdate } from "../../../types";
 import { useAuth } from "../../../context/auth/AuthContext";
 
 const BLOCKDIVIDER = "~~DIVIDER~~";
@@ -169,7 +172,6 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
             const response = await updateNote(submitData);
             showToast("Note updated successfully.", "success");
 
-            // Note; post_save_action values are either "view" | "stay"
             if (profile?.post_save_action === "view") {
                 navigate(`/notes/${response.id}/view`, { state: location.state });
             }
@@ -285,4 +287,5 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
         </div>
     );
 };
+
 export default NoteEditor;

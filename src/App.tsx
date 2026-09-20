@@ -1,5 +1,4 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
-import "./App.css";
 
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
@@ -28,7 +27,6 @@ import List from "./pages/dashboard/lists/List";
 import LogCollection from "./pages/dashboard/logs/LogCollection";
 import Log from "./pages/dashboard/logs/Log";
 
-import Test from "./pages/Test";
 import AuthProvider from "./context/auth/AuthProvider";
 import VerifyEmail from "./pages/auth/VerifyEmail";
 import VerifyEmailChange from "./pages/dashboard/profile/VerifyEmailChange";
@@ -45,10 +43,7 @@ const router = createBrowserRouter([
             // Public facing
             {
                 element: <PublicLayout />,
-                children: [
-                    { path: "quick", element: <Quick /> },
-                    { path: "test", element: <Test /> },
-                ],
+                children: [{ path: "quick", element: <Quick /> }],
             },
 
             // Auth routes

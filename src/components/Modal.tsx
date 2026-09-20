@@ -1,8 +1,10 @@
 import { useEffect, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+
 import Icon from "./Icon";
 import Divider from "./Divider";
 import TextButton from "./TextButton";
-import { createPortal } from "react-dom";
+
 import type { ButtonVariant } from "../types";
 
 interface ModalAction extends ButtonHTMLAttributes<HTMLButtonElement> {

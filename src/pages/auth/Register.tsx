@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import FieldLabel from "../../components/FieldLabel";
 import LinkText from "../../components/LinkText";
 import TextButton from "../../components/TextButton";
 import TextInput from "../../components/TextInput";
+
 import useHead from "../../hooks/useHead";
-import { signUp } from "../../services/auth";
 import { useToast } from "../../context/toast/ToastContext";
-import { useNavigate } from "react-router-dom";
+
+import { signUp } from "../../services/auth";
 
 const Register = () => {
     useHead({ title: "Register" });
@@ -95,4 +98,5 @@ const Register = () => {
         </form>
     );
 };
+
 export default Register;

@@ -1,6 +1,8 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../context/auth/AuthContext";
+
 import Logo from "../components/Logo";
+
+import { useAuth } from "../context/auth/AuthContext";
 
 const AuthLayout = () => {
     const { user, authLoading } = useAuth();
@@ -21,4 +23,5 @@ const AuthLayout = () => {
         </div>
     );
 };
+
 export default AuthLayout;

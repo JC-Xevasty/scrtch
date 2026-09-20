@@ -1,12 +1,16 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+
 import TextButton from "../TextButton";
 import Icon from "../Icon";
+import Popover from "../Popover";
+
 import CollectionListItem from "./CollectionListItem";
 import CollectionGridItem from "./CollectionGridItem";
-import Popover from "../Popover";
 import GroupSelector from "./GroupSelector";
+
 import type { Group, List, Log, Note } from "../../types";
+
 import { useToast } from "../../context/toast/ToastContext";
 
 export interface CollectionItem {
@@ -67,6 +71,7 @@ const Collection = ({
     updateHook,
 }: CollectionPropTypes) => {
     const { showToast } = useToast();
+
     const pinnedItems = useMemo(() => {
         if (items.length === 0) return [];
         return items.filter((item) => item.is_pinned_collection === true);

@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import Icon from "../../../components/Icon";
 import TextButton from "../../../components/TextButton";
-import type { ListCreate, ListItemDelete, ListItemUpdate, ListUpdate } from "../../../types";
 import FieldLabel from "../../../components/FieldLabel";
 import TextInput from "../../../components/TextInput";
 import TextBlock from "../../../components/TextBlock";
+
+import type { ListCreate, ListItemDelete, ListItemUpdate, ListUpdate } from "../../../types";
+
 import { useAuth } from "../../../context/auth/AuthContext";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useList, useListMutation } from "../../../hooks/useLists";
@@ -473,4 +476,5 @@ const ListEditor = ({ id }: { id: string | undefined }) => {
         </div>
     );
 };
+
 export default ListEditor;

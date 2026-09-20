@@ -32,19 +32,8 @@ const LinksItem = ({
 
                 {item_type === "link" && (
                     <>
-                        {/* 1. Link Name
-                        - flex-1: It wants to take all space by default.
-                        - min-w-[80px]: It will never shrink below this.
-                        */}
                         <span className="truncate flex-1 min-w-20">{title}</span>
 
-                        {/* 2. URL
-                            - flex-[0_1_auto]: 
-                                    0 (don't grow if space is empty)
-                                    1 (shrink if space is tight)
-                                    auto (basis)
-                            - min-w-0: Essential for truncation.
-                        */}
                         {active && (
                             <span className="text-foreground-secondary truncate flex-[0_1_auto] min-w-0">{href}</span>
                         )}

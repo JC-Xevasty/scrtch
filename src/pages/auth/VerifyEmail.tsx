@@ -1,9 +1,11 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useToast } from "../../context/toast/ToastContext";
 import { useEffect } from "react";
-import { signOut, verifyTokenHash } from "../../services/auth";
-import { useAuth } from "../../context/auth/AuthContext";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import useHead from "../../hooks/useHead";
+import { useToast } from "../../context/toast/ToastContext";
+import { useAuth } from "../../context/auth/AuthContext";
+
+import { signOut, verifyTokenHash } from "../../services/auth";
 
 const VerifyEmail = () => {
     useHead({ title: "Verify Email" });
@@ -43,4 +45,5 @@ const VerifyEmail = () => {
 
     return <div className="text-center text-sm font-semibold mt-4">Verifying email address, please wait...</div>;
 };
+
 export default VerifyEmail;

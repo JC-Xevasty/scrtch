@@ -1,16 +1,20 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import Icon from "../../../components/Icon";
 import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Modal from "../../../components/Modal";
-import type { GroupDelete, GroupUpdate } from "../../../types";
 import FieldLabel from "../../../components/FieldLabel";
 import TextInput from "../../../components/TextInput";
 import TextBlock from "../../../components/TextBlock";
 import Checkbox from "../../../components/Checkbox";
+
+import GroupContent from "./GroupContent";
+
+import type { GroupDelete, GroupUpdate } from "../../../types";
+
 import { useToast } from "../../../context/toast/ToastContext";
 import { useGroup, useGroupMutation } from "../../../hooks/useGroups";
-import GroupContent from "./GroupContent";
 
 const DELETENORMAL = false;
 const DELETECASCADE = true;

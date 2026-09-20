@@ -1,14 +1,17 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import FieldLabel from "../../components/FieldLabel";
 import TextInput from "../../components/TextInput";
 import TextButton from "../../components/TextButton";
 import LinkText from "../../components/LinkText";
+
 import useHead from "../../hooks/useHead";
-import { signIn } from "../../services/auth";
-import { useState } from "react";
 import { useToast } from "../../context/toast/ToastContext";
 import { useAuth } from "../../context/auth/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/theme/ThemeContext";
+
+import { signIn } from "../../services/auth";
 
 const Login = () => {
     useHead({ title: "Login" });
@@ -101,4 +104,5 @@ const Login = () => {
         </form>
     );
 };
+
 export default Login;

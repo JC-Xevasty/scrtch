@@ -1,12 +1,15 @@
 import React, { useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Divider from "../../../components/Divider";
 import Modal from "../../../components/Modal";
-import { useNote, useNoteMutation } from "../../../hooks/useNotes";
-import { useToast } from "../../../context/toast/ToastContext";
+
 import GroupSelector from "../../../components/dashboard/GroupSelector";
+
+import { useToast } from "../../../context/toast/ToastContext";
+import { useNote, useNoteMutation } from "../../../hooks/useNotes";
 
 const NoteViewer = ({ id }: { id: string | undefined }) => {
     const navigate = useNavigate();

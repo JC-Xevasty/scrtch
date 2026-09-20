@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import Logo from "../components/Logo";
-import useHead from "../hooks/useHead";
-import { useAuth } from "../context/auth/AuthContext";
+
 import TextButton from "../components/TextButton";
 import Icon from "../components/Icon";
+
+import Logo from "../components/Logo";
+
+import useHead from "../hooks/useHead";
+import { useAuth } from "../context/auth/AuthContext";
 
 const Home = () => {
     useHead({ title: "scrtch" });
@@ -23,7 +26,9 @@ const Home = () => {
                     className="w-[80vw] max-w-175"
                     svgClassName="drop-shadow-[0_0_10px_var(--color-foreground-muted)]"
                 />
-                <p className="italic text-foreground-secondary text-xl text-center mt-2">Designed and built for personal utility.</p>
+                <p className="italic text-foreground-secondary text-xl text-center mt-2">
+                    Designed and built for personal utility.
+                </p>
                 <div className="flex gap-4 mt-8">
                     {!user ? (
                         <Link to="login">
@@ -45,7 +50,7 @@ const Home = () => {
             <div className="absolute bottom-1 text-foreground-muted">
                 <div className={"flex justify-between items-center w-screen px-4 py-2 text-sm"}>
                     <p>
-                        <span>&#0169; 2026 | Built with </span>
+                        <span>&#0169; {new Date().getFullYear()} | Built with </span>
                         <a
                             href="https://react.dev/"
                             target="_blank"
@@ -65,7 +70,7 @@ const Home = () => {
                         </a>
                     </p>
                     <a
-                        href="https://github.com/JC-Xevasty"
+                        href="https://github.com/JC-Xevasty/scrtch"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline transition-all hover:text-foreground-secondary"

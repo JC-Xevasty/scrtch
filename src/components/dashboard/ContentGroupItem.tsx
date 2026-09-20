@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { DateFormat } from "../../utils/helpers";
 import Icon from "../Icon";
+
 import type { Content } from "../../types";
 
 interface ContentGridItemProps extends Content {

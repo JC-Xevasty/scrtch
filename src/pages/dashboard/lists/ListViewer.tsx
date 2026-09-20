@@ -1,12 +1,16 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Modal from "../../../components/Modal";
-import Icon from "../../../components/Icon";
+
+import GroupSelector from "../../../components/dashboard/GroupSelector";
+
 import type { ListItem, ListType } from "../../../types";
+
 import { useToast } from "../../../context/toast/ToastContext";
 import { useList, useListMutation } from "../../../hooks/useLists";
-import GroupSelector from "../../../components/dashboard/GroupSelector";
 
 const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListType } & ListItem) => {
     const [showContent, setShowContent] = useState(false);

@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 import type { PopoverHorizontalAlign, PopoverPosition, PopoverVerticalAlign } from "../types";
-import { createPortal } from "react-dom";
 
 interface PopoverProps {
     anchor: DOMRect;
@@ -130,11 +130,10 @@ const Popover = ({
 
     useEffect(() => {
         if (onClose === undefined) return;
-        
+
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
         };
-        
 
         window.addEventListener("keydown", handleEsc);
         window.addEventListener("scroll", onClose);
@@ -154,7 +153,10 @@ const Popover = ({
                 {children}
             </div>
         </div>,
-        document.getElementById("root") ?? document.body,
+        document.getElementById("dashboard-content") ??
+            document.querySelector("main") ??
+            document.getElementById("root") ??
+            document.body,
     );
 };
 

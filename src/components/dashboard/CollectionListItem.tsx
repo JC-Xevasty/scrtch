@@ -64,4 +64,5 @@ const CollectionListItem = ({
         </div>
     );
 };
+
 export default CollectionListItem;

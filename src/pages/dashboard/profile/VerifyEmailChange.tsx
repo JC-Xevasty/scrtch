@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { verifyTokenHash } from "../../../services/auth";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useToast } from "../../../context/toast/ToastContext";
+
 import useHead from "../../../hooks/useHead";
+import { useToast } from "../../../context/toast/ToastContext";
+
+import { verifyTokenHash } from "../../../services/auth";
 
 const VerifyEmailChange = () => {
     useHead({ title: "Account Settings" });

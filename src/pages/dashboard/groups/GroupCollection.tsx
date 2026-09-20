@@ -1,12 +1,16 @@
 import { useState } from "react";
-import Collection from "../../../components/dashboard/Collection";
-import type { GroupCreate } from "../../../types";
+
 import Modal from "../../../components/Modal";
 import FieldLabel from "../../../components/FieldLabel";
 import TextInput from "../../../components/TextInput";
-import { useGroupMutation, useGroups } from "../../../hooks/useGroups";
 import TextBlock from "../../../components/TextBlock";
+
+import Collection from "../../../components/dashboard/Collection";
+
+import type { GroupCreate } from "../../../types";
+
 import { useToast } from "../../../context/toast/ToastContext";
+import { useGroupMutation, useGroups } from "../../../hooks/useGroups";
 
 const GroupCollection = () => {
     const { showToast } = useToast();
