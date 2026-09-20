@@ -1,11 +1,11 @@
-<p style="text-align: center">
+<p align="center">
     <picture>
         <source media="(prefers-color-scheme: dark)" srcset=".github/assets/scrtch-logo-dark.svg">
         <source media="(prefers-color-scheme: light)" srcset=".github/assets/scrtch-logo-light.svg">
         <img alt="scrtch logo" src=".github/assets/scrtch-logo-light.svg" width="280">
   </picture>
 </p>
-<p style="text-align: center" title="Do you have a scratch paper?">
+<p align="center" title="Do you have a scratch paper?">
     <i>"May scratch paper ka?"</i>
 </p>
 
