@@ -35,7 +35,9 @@ A minimal, secure, and personal scratchpad app for note-taking.
 - **Authentication**: User accounts and auth flows powered by Supabase, keeping data private per user.
 - **Responsive Layout**: Minimalist UI that works across desktop and mobile screens.
 
-<!-- ![scrtch Dashboard Preview](.github/assets/preview.gif) -->
+<p align="center">
+    <img src=".github/assets/scrtch-preview-20260920.gif" alt="scrtch Dashboard Preview" width="640" height="360" />
+</p>
 
 ## Architecture Overview
 
