@@ -40,10 +40,15 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
             { index: true, element: <Home /> },
+
             // Public facing
             {
                 element: <PublicLayout />,
-                children: [{ path: "quick", element: <Quick /> }],
+                children: [
+                    { path: "quick", element: <Quick /> },
+                    // Catch-all
+                    { path: "*", element: <NotFound /> },
+                ],
             },
 
             // Auth routes
@@ -109,9 +114,6 @@ const router = createBrowserRouter([
             },
         ],
     },
-
-    // Catch-all
-    { path: "*", element: <NotFound /> },
 ]);
 
 const App = () => {
