@@ -11,7 +11,7 @@ import type { ListCreate, ListItemDelete, ListItemUpdate, ListUpdate } from "../
 
 import { useAuth } from "../../../context/auth/AuthContext";
 import { useToast } from "../../../context/toast/ToastContext";
-import { useList, useListMutation } from "../../../hooks/useLists";
+import { useList, useListMutation } from "../../../hooks/dashboard/useLists";
 
 const NEWITEMINDICATOR = "~NEW~";
 

@@ -9,7 +9,7 @@ import GroupSelector from "../../../components/dashboard/GroupSelector";
 
 import type { LogItem } from "../../../types";
 import { useToast } from "../../../context/toast/ToastContext";
-import { useLog, useLogMutation } from "../../../hooks/useLogs";
+import { useLog, useLogMutation } from "../../../hooks/dashboard/useLogs";
 
 import { DateFormat } from "../../../utils/helpers";
 

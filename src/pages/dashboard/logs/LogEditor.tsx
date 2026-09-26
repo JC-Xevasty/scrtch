@@ -13,7 +13,7 @@ import type { LogCreate, LogItem, LogItemDelete, LogItemUpdate, LogUpdate } from
 
 import { useAuth } from "../../../context/auth/AuthContext";
 import { useToast } from "../../../context/toast/ToastContext";
-import { useLog, useLogMutation } from "../../../hooks/useLogs";
+import { useLog, useLogMutation } from "../../../hooks/dashboard/useLogs";
 
 const NEWITEMINDICATOR = "~NEW~";
 

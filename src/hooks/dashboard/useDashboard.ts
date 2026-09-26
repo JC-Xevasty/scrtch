@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchDashboardCleanupStats, fetchDashboardPinned, fetchDashboardStats, fetchRecentActivity } from "../services/dashboard";
-import type { Content, DashboardCleanupStats, DashboardPinnedItems, DashboardStats } from "../types";
+import { fetchDashboardCleanupStats, fetchDashboardPinned, fetchDashboardStats, fetchRecentActivity } from "../../services/dashboard";
+import type { Content, DashboardCleanupStats, DashboardPinnedItems, DashboardStats } from "../../types";
 
 interface MutationError { status?: string; message: string; }
 

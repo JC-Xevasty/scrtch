@@ -1,5 +1,5 @@
 import Collection from "../../../components/dashboard/Collection";
-import { useListMutation, useLists } from "../../../hooks/useLists";
+import { useListMutation, useLists } from "../../../hooks/dashboard/useLists";
 
 const ListCollection = () => {
     const { data, isLoading, error } = useLists();

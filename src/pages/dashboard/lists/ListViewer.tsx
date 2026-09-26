@@ -10,7 +10,7 @@ import GroupSelector from "../../../components/dashboard/GroupSelector";
 import type { ListItem, ListType } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useList, useListMutation } from "../../../hooks/useLists";
+import { useList, useListMutation } from "../../../hooks/dashboard/useLists";
 
 const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListType } & ListItem) => {
     const [showContent, setShowContent] = useState(false);

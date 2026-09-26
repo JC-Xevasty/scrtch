@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import type { Group, GroupContent, GroupCreate, GroupDelete, GroupUpdate, ListDetail, LogDetail, Note } from "../types";
-import { createGroup, deleteGroup, fetchGroup, fetchGroupCollection, updateGroup } from "../services/groups";
+import type { Group, GroupContent, GroupCreate, GroupDelete, GroupUpdate, ListDetail, LogDetail, Note } from "../../types";
+import { createGroup, deleteGroup, fetchGroup, fetchGroupCollection, updateGroup } from "../../services/groups";
 
 interface MutationError { status?: string; message: string; }
 

@@ -13,7 +13,7 @@ import LinksItem from "./LinkItem";
 import type { LinkItemUpdate, Link, LinkItemType, LinkCreate, LinkUpdate, LinkDelete } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useLinkMutation, useLinks } from "../../../hooks/useLinks";
+import { useLinkMutation, useLinks } from "../../../hooks/dashboard/useLinks";
 
 type LinkModalType = "add" | "edit" | "delete";
 

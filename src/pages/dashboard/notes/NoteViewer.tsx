@@ -9,7 +9,7 @@ import Modal from "../../../components/Modal";
 import GroupSelector from "../../../components/dashboard/GroupSelector";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useNote, useNoteMutation } from "../../../hooks/useNotes";
+import { useNote, useNoteMutation } from "../../../hooks/dashboard/useNotes";
 
 const NoteViewer = ({ id }: { id: string | undefined }) => {
     const navigate = useNavigate();

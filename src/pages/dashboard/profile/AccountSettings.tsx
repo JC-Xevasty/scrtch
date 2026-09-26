@@ -13,7 +13,7 @@ import useHead from "../../../hooks/useHead";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useAuth, type UserProfile } from "../../../context/auth/AuthContext";
 import { useTheme, type ThemeMode } from "../../../context/theme/ThemeContext";
-import { useAccountMutation } from "../../../hooks/useAccount";
+import { useAccountMutation } from "../../../hooks/dashboard/useAccount";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { deleteAccount, signOut, updateEmail, updatePassword, updateUserProfile } from "../../../services/auth";

@@ -10,7 +10,7 @@ import Collection from "../../../components/dashboard/Collection";
 import type { GroupCreate } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useGroupMutation, useGroups } from "../../../hooks/useGroups";
+import { useGroupMutation, useGroups } from "../../../hooks/dashboard/useGroups";
 
 const GroupCollection = () => {
     const { showToast } = useToast();

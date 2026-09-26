@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { List, ListCreate, ListDetail, ListRecordUpdate, ListUpdate } from "../types";
-import { createList, deleteList, fetchList, fetchListCollection, updateList, updateListRecord } from "../services/lists";
+import type { List, ListCreate, ListDetail, ListRecordUpdate, ListUpdate } from "../../types";
+import { createList, deleteList, fetchList, fetchListCollection, updateList, updateListRecord } from "../../services/lists";
 
 interface MutationError { status?: string; message: string; }
 

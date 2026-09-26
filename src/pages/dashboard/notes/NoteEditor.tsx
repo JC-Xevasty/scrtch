@@ -10,7 +10,7 @@ import TextBlock from "../../../components/TextBlock";
 import type { NoteCreate, NoteUpdate } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useNote, useNoteMutation } from "../../../hooks/useNotes";
+import { useNote, useNoteMutation } from "../../../hooks/dashboard/useNotes";
 import { useAuth } from "../../../context/auth/AuthContext";
 
 const BLOCKDIVIDER = "~~DIVIDER~~";

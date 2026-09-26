@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import type { Note, NoteCreate, NoteUpdate } from '../types';
-import { createNote, deleteNote, fetchNote, fetchNoteCollection, updateNote } from '../services/notes';
+import type { Note, NoteCreate, NoteUpdate } from '../../types';
+import { createNote, deleteNote, fetchNote, fetchNoteCollection, updateNote } from '../../services/notes';
 
 interface MutationError { status?: string; message: string; }
 

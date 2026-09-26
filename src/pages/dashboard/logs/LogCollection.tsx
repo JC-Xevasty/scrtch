@@ -1,5 +1,5 @@
 import Collection from "../../../components/dashboard/Collection";
-import { useLogMutation, useLogs } from "../../../hooks/useLogs";
+import { useLogMutation, useLogs } from "../../../hooks/dashboard/useLogs";
 
 const LogCollection = () => {
     const { data, isLoading, error } = useLogs();

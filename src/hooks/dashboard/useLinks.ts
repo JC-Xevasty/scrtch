@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import type { Link, LinkCreate, LinkDelete, LinkFolder, LinkUpdate } from '../types';
-import { createLinkItem, deleteLinkItem, fetchLinksByFolder, updateLinkItem } from '../services/links';
+import type { Link, LinkCreate, LinkDelete, LinkFolder, LinkUpdate } from '../../types';
+import { createLinkItem, deleteLinkItem, fetchLinksByFolder, updateLinkItem } from '../../services/links';
 
 interface MutationError { status?: string; message: string; }
 

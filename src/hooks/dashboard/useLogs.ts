@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { Log, LogCreate, LogDetail, LogRecordUpdate, LogUpdate } from "../types";
-import { createLog, deleteLog, fetchLog, fetchLogCollection, updateLog, updateLogRecord } from "../services/logs";
+import type { Log, LogCreate, LogDetail, LogRecordUpdate, LogUpdate } from "../../types";
+import { createLog, deleteLog, fetchLog, fetchLogCollection, updateLog, updateLogRecord } from "../../services/logs";
 
 interface MutationError { status?: string; message: string; }
 

@@ -10,7 +10,7 @@ import ContentListItem from "../../components/dashboard/ContentListItem";
 import ContentGridItem from "../../components/dashboard/ContentGroupItem";
 
 import useHead from "../../hooks/useHead";
-import { useDashboardPinned, useDashboardStats, useRecentActivity } from "../../hooks/useDashboard";
+import { useDashboardPinned, useDashboardStats, useRecentActivity } from "../../hooks/dashboard/useDashboard";
 
 const Dashboard = () => {
     useHead({ title: "Dashboard" });

@@ -14,7 +14,7 @@ import GroupContent from "./GroupContent";
 import type { GroupDelete, GroupUpdate } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useGroup, useGroupMutation } from "../../../hooks/useGroups";
+import { useGroup, useGroupMutation } from "../../../hooks/dashboard/useGroups";
 
 const DELETENORMAL = false;
 const DELETECASCADE = true;

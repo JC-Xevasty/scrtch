@@ -1,5 +1,5 @@
 import Collection from "../../../components/dashboard/Collection";
-import { useNoteMutation, useNotes } from "../../../hooks/useNotes";
+import { useNoteMutation, useNotes } from "../../../hooks/dashboard/useNotes";
 
 const NoteCollection = () => {
     const { data, isLoading, error } = useNotes();

@@ -10,9 +10,9 @@ import GroupSelector from "../../../components/dashboard/GroupSelector";
 import type { Content } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
-import { useListMutation } from "../../../hooks/useLists";
-import { useLogMutation } from "../../../hooks/useLogs";
-import { useNoteMutation } from "../../../hooks/useNotes";
+import { useListMutation } from "../../../hooks/dashboard/useLists";
+import { useLogMutation } from "../../../hooks/dashboard/useLogs";
+import { useNoteMutation } from "../../../hooks/dashboard/useNotes";
 
 const ItemsTypePill = ({
     label,

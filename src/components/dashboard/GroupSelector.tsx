@@ -5,7 +5,7 @@ import Modal from "../Modal";
 
 import type { List, Log, Note } from "../../types";
 
-import { useGroups } from "../../hooks/useGroups";
+import { useGroups } from "../../hooks/dashboard/useGroups";
 import { useToast } from "../../context/toast/ToastContext";
 
 interface GroupSelectorProps {

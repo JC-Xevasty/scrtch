@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteUserContent } from '../services/auth';
+import { deleteUserContent } from '../../services/auth';
 
 interface MutationError { status?: string; message: string; }
 
