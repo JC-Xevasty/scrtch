@@ -10,6 +10,7 @@ import IconButton from "../components/IconButton";
 import Modal from "../components/Modal";
 
 import { useToast } from "../context/toast/ToastContext";
+import useUnsavedChanges from "../hooks/useUnsavedChanges";
 
 import { DateFormat } from "../utils/helpers";
 
@@ -50,6 +51,8 @@ interface Scratch {
 
 const Quick = () => {
     const { showToast } = useToast();
+    useUnsavedChanges();
+
     const [currentScratch, setCurrentScratch] = useState<Scratch>({ id: 0, title: "", content: "", updated_at: 0 });
     const [scratchList, setScratchList] = useState<Scratch[]>([]);
     const [copied, setCopied] = useState(false);

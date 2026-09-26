@@ -12,6 +12,7 @@ import type { NoteCreate, NoteUpdate } from "../../../types";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useNote, useNoteMutation } from "../../../hooks/dashboard/useNotes";
 import { useAuth } from "../../../context/auth/AuthContext";
+import useUnsavedChanges from "../../../hooks/useUnsavedChanges";
 
 const BLOCKDIVIDER = "~~DIVIDER~~";
 
@@ -58,6 +59,7 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
     const location = useLocation();
     const { profile } = useAuth();
     const { showToast } = useToast();
+    useUnsavedChanges();
 
     const { data: note, isLoading, error } = useNote(id);
     const { createNote, isCreating, updateNote, isUpdating } = useNoteMutation();

@@ -14,6 +14,7 @@ import type { LogCreate, LogItem, LogItemDelete, LogItemUpdate, LogUpdate } from
 import { useAuth } from "../../../context/auth/AuthContext";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useLog, useLogMutation } from "../../../hooks/dashboard/useLogs";
+import useUnsavedChanges from "../../../hooks/useUnsavedChanges";
 
 const NEWITEMINDICATOR = "~NEW~";
 
@@ -167,6 +168,7 @@ const LogEditor = ({ id }: { id: string | undefined }) => {
     const location = useLocation();
     const { profile } = useAuth();
     const { showToast } = useToast();
+    useUnsavedChanges();
 
     const { data: log, isLoading, error } = useLog(id);
     const { createLog, isCreating, updateLog, isUpdating } = useLogMutation();

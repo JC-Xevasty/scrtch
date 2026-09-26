@@ -12,6 +12,7 @@ import type { ListCreate, ListItemDelete, ListItemUpdate, ListUpdate } from "../
 import { useAuth } from "../../../context/auth/AuthContext";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useList, useListMutation } from "../../../hooks/dashboard/useLists";
+import useUnsavedChanges from "../../../hooks/useUnsavedChanges";
 
 const NEWITEMINDICATOR = "~NEW~";
 
@@ -161,6 +162,7 @@ const ListEditor = ({ id }: { id: string | undefined }) => {
     const location = useLocation();
     const { profile } = useAuth();
     const { showToast } = useToast();
+    useUnsavedChanges();
 
     const { data: list, isLoading, error } = useList(id);
     const { createList, isCreating, updateList, isUpdating } = useListMutation();
