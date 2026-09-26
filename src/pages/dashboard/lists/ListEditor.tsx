@@ -374,7 +374,7 @@ const ListEditor = ({ id }: { id: string | undefined }) => {
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3">
+            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3 z-10">
                 <div className="flex flex-row items-center gap-4">
                     {isLoading || isCreating || isUpdating ? (
                         <div>
