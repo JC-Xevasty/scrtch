@@ -109,7 +109,7 @@ const NoteViewer = ({ id }: { id: string | undefined }) => {
                         {noteContent.map((v, i, arr) => {
                             return (
                                 <React.Fragment key={i}>
-                                    <p className="whitespace-pre-wrap text-sm">{v}</p>
+                                    <p className="whitespace-pre-wrap wrap-break-word text-sm">{v}</p>
 
                                     {i < arr.length - 1 && (
                                         <div className="my-4">

@@ -39,18 +39,18 @@ const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListT
                         </div>
                     )}
                 </div>
-                <div className="grow bg-background-1 border border-background-3 shadow-sm rounded-md p-4 ">
-                    <p className="whitespace-pre-wrap">{title}</p>
+                <div className="grow bg-background-1 border border-background-3 shadow-sm rounded-md p-4 min-w-0">
+                    <p className="whitespace-pre-wrap wrap-break-word">{title}</p>
                 </div>
             </div>
             {hasContent && showContent && (
                 <>
                     <div className="flex items-start gap-2 mt-4">
                         <div
-                            className="border-l-2 border-b-2 border-background-3 rounded-bl-md w-10 h-6 ml-3 hover:border-background-2 cursor-pointer"
+                            className="shrink-0 border-l-2 border-b-2 border-background-3 rounded-bl-md w-10 h-6 ml-3 hover:border-background-2 cursor-pointer"
                             onClick={() => setShowContent((prev) => !prev)}
                         />
-                        <div className="grow bg-background-3 border border-white/20 shadow-sm rounded-md p-4 whitespace-pre-wrap">
+                        <div className="grow min-w-0 bg-background-3 border border-white/20 shadow-sm rounded-md p-4 whitespace-pre-wrap wrap-break-word">
                             {content}
                         </div>
                     </div>
