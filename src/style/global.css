@@ -138,7 +138,7 @@ h2 {
 }
 
 .sidebar {
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 button:not([disabled]) {

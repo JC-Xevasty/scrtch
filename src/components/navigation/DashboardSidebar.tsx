@@ -34,8 +34,10 @@ const DashboardSidebar = () => {
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
 
     return (
-        <div className={`h-full ${isSidebarExpanded ? "w-50" : "w-14"} transition-[width] duration-300 ease-in-out`}>
-            <div className="h-full p-2 flex flex-col justify-between overflow-hidden">
+        <div
+            className={`h-full w-40 ${isSidebarExpanded ? "sm:w-50" : "sm:w-14"} transition-[width] duration-300 ease-in-out`}
+        >
+            <div id="dashboard-sidebar" className="h-full p-2 flex flex-col justify-between overflow-hidden">
                 <nav>
                     <SidebarLink active={mainPath === "dashboard"} url="/dashboard" icon="home" label="Home" />
                     <Divider />
@@ -47,8 +49,10 @@ const DashboardSidebar = () => {
                         <SidebarLink active={mainPath === "links"} url="/links" icon="globe" label="Links" />
                     </div>
                 </nav>
+
+                {/* Hide on mobile */}
                 <div
-                    className="p-2 rounded-md hover:bg-background-2 w-fit"
+                    className="hidden sm:block p-2 rounded-md hover:bg-background-2 w-fit"
                     onClick={() => setIsSidebarExpanded((prev) => !prev)}
                 >
                     <Icon

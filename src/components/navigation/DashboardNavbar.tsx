@@ -80,10 +80,19 @@ const DashboardNavbar = () => {
     };
 
     return (
-        <header className="bg-background-1 flex justify-between items-center px-8 py-4 shadow-md z-10">
+        <header
+            id="dashboard-header"
+            className="bg-background-1 flex justify-between items-center px-3 sm:px-8 py-3 sm:py-4 shadow-md z-10"
+        >
+            {/* Space for mobile sidebar toggler */}
+            <div className="block w-6 sm:hidden" />
+
+            {/* Logo */}
             <Link to="/dashboard">
-                <Logo className="h-8" />
+                <Logo className="h-6 sm:h-8" />
             </Link>
+
+            {/* Account */}
             <div className="relative" ref={popupRef}>
                 <div onClick={() => setIsOpen(!isOpen)}>
                     <Icon name="person" className="hover:text-foreground-secondary cursor-pointer" />
@@ -91,7 +100,7 @@ const DashboardNavbar = () => {
                 {isOpen && (
                     <>
                         <div className="absolute right-0 top-full mt-2 z-50 transition-colors header-popup">
-                            <div className="w-64 p-4 rounded bg-background-2 border border-white/10 shadow-md text-xs">
+                            <div className="w-50 sm:w-64 p-4 rounded bg-background-2 border border-white/10 shadow-md text-xs">
                                 <p className="font-semibold truncate ">{user?.email}</p>
                                 <Divider className="-mx-4" />
                                 <Link to="/account-settings" className="font-medium hover:opacity-70">
