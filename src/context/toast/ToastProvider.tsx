@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { ToastContext, type ToastStatus } from "./ToastContext";
 import { createPortal } from "react-dom";
+
 import ToastItem from "./ToastItem";
+
+import { ToastContext, type ToastStatus } from "./ToastContext";
+
+import { getUUID } from "../../utils/helpers";
 
 interface Toast {
     id: string;
@@ -24,7 +28,7 @@ const ToastProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const showToast = useCallback((message: string, type?: ToastStatus) => {
-        const id = crypto.randomUUID();
+        const id = getUUID();
         setToasList((prev) => [{ id, message, type: type ?? "default" }, ...prev.slice(0, 4)]);
 
         // Auto-remove after 5 seconds
