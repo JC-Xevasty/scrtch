@@ -65,7 +65,7 @@ const ContentGridItem = ({
                         </div>
                     )}
                     <div className="flex items-start gap-2">
-                        <p className="line-clamp-2" title={title}>
+                        <p className="line-clamp-2 wrap-break-word" title={title}>
                             {title}
                         </p>
 

@@ -55,28 +55,28 @@ const Dashboard = () => {
                             <p className="text-center">Failed to load dashboard stats: {statsError?.message}</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-4 gap-4 mb-4">
-                            <div className=" bg-background-2 border border-white/10 shadow-md p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                            <div className=" bg-background-2 border border-white/10 shadow-md p-2 md:p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
                                 <div className="flex flex-col gap-2 items-center">
-                                    <p className="font-bold text-5xl">{stats.notes.count}</p>
+                                    <p className="font-bold text-4xl lg:text-5xl">{stats.notes.count}</p>
                                     <span>Notes</span>
                                 </div>
                             </div>
-                            <div className=" bg-background-2 border border-white/10 shadow-md p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
+                            <div className=" bg-background-2 border border-white/10 shadow-md p-2 md:p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
                                 <div className="flex flex-col gap-2 items-center">
-                                    <p className="font-bold text-5xl">{stats.lists.count}</p>
+                                    <p className="font-bold text-4xl lg:text-5xl">{stats.lists.count}</p>
                                     <span>Lists</span>
                                 </div>
                             </div>
-                            <div className=" bg-background-2 border border-white/10 shadow-md p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
+                            <div className=" bg-background-2 border border-white/10 shadow-md p-2 md:p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
                                 <div className="flex flex-col gap-2 items-center">
-                                    <p className="font-bold text-5xl">{stats.logs.count}</p>
+                                    <p className="font-bold text-4xl lg:text-5xl">{stats.logs.count}</p>
                                     <span>Logs</span>
                                 </div>
                             </div>
-                            <div className=" bg-background-2 border border-white/10 shadow-md p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
+                            <div className=" bg-background-2 border border-white/10 shadow-md p-2 md:p-4 rounded hover:bg-background-3 hover:border-white/20 cursor-pointer">
                                 <div className="flex flex-col gap-2 items-center">
-                                    <p className="font-bold text-5xl">{stats.links.link_count}</p>
+                                    <p className="font-bold text-4xl lg:text-5xl">{stats.links.link_count}</p>
                                     <span>Links</span>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                             <p className="text-center">Failed to load pinned items: {pinnedError?.message}</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <h2 className="font-medium border-b-4 border-background-3 pb-2 px-3 capitalize mb-4">
                                     Pinned Items
@@ -183,7 +183,7 @@ const Dashboard = () => {
                                 </p>
                             )}
                             {recent.length > 0 && view === "grid" && (
-                                <div className="grid grid-cols-4 gap-4">
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                     {recent.map((item) => {
                                         return (
                                             <ContentGridItem
