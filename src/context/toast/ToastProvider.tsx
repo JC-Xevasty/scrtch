@@ -53,7 +53,7 @@ const ToastProvider = ({ children }: { children: ReactNode }) => {
             {children}
             {toastList.length > 0 &&
                 createPortal(
-                    <div className="toast-container fixed bottom-0 right-0 mb-4 px-8 z-9999 flex flex-col gap-3 w-full max-w-100">
+                    <div className="toast-container fixed bottom-0 right-0 mb-4 px-4 sm:px-8 z-9999 flex flex-col gap-3 w-full max-w-full sm:max-w-100">
                         {toastList.map((toast) => (
                             <ToastItem
                                 key={toast.id}

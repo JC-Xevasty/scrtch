@@ -2,7 +2,7 @@ import Icon, { type IconProps } from "../../components/Icon";
 import type { ToastStatus } from "./ToastContext";
 import type { Toast } from "./ToastProvider";
 
-const BASESTYLES = "p-4 rounded-lg flex justify-between items-center w-full";
+const BASESTYLES = "p-3 sm:p-4 rounded-lg flex justify-between items-center w-full";
 
 const VARIANT = {
     default: "bg-background-3 border border-white/20 text-foreground-primary",
@@ -21,7 +21,7 @@ const ICONS: Record<ToastStatus, IconProps> = {
 const ToastItem = ({ message, type, isExiting, handleClose }: Toast & { handleClose: () => void }) => {
     return (
         <div className={`toast-item ${BASESTYLES} ${VARIANT[type]} ${isExiting ? "toast-exit" : ""}`} role="alert">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 min-w-0 wrap-break-word">
                 <Icon size={20} {...ICONS[type]} className="shrink-0" />
                 <p className="text-sm font-medium line-clamp-2 select-none" title={message}>
                     {message}
