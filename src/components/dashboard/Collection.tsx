@@ -145,7 +145,7 @@ const Collection = ({
                             <h2 className="font-medium border-b-4 border-background-3 pb-2 px-3 capitalize mb-4">
                                 Pinned {collectionName}
                             </h2>
-                            <div className="grid grid-cols-4 gap-4 mb-4">
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
                                 {pinnedItems.map((item) => {
                                     return (
                                         <CollectionGridItem
@@ -204,7 +204,7 @@ const Collection = ({
                     )}
 
                     {items.length > 0 && view === "grid" && (
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {items.map((item) => {
                                 return (
                                     <CollectionGridItem

@@ -64,6 +64,13 @@ const GroupSelector = ({ contentId, currentGroup, updateHook, trigger, triggerCl
             let submitData = { id: contentId, group_id: selectedGroup, is_pinned_group: false };
 
             await updateHook.updateContent(submitData);
+
+            if (selectedGroup) {
+                const newGroup = groups?.find((group) => group.id === selectedGroup);
+                showToast(`Added to ${newGroup?.title}`, "success");
+            } else {
+                showToast(`Content ungrouped`, "success");
+            }
         } catch (error: any) {
             showToast(error.message, "error");
             throw null;

@@ -47,7 +47,7 @@ const CollectionGridItem = ({
                     )}
 
                     <div className="flex items-start gap-2">
-                        <p className="line-clamp-2" title={itemName}>
+                        <p className="line-clamp-2 wrap-break-word" title={itemName}>
                             {itemName}
                         </p>
 

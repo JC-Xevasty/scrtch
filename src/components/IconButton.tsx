@@ -31,9 +31,9 @@ const SIZES = {
 };
 
 const SIZESWITHTEXT = {
-    sm: "text-xs px-2 py-1 rounded-sm",
-    md: "text-sm px-4 py-2 rounded-md",
-    lg: "text-base px-6 py-3 rounded-lg",
+    sm: "text-xs px-1 sm:px-2 py-1 rounded-sm",
+    md: "text-sm px-2 sm:px-4 py-2 rounded-md",
+    lg: "text-base px-3 sm:px-6 py-3 rounded-lg",
 };
 
 const ICONSIZE = { sm: 16, md: 20, lg: 24 };

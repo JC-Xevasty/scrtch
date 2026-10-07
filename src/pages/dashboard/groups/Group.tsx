@@ -110,7 +110,7 @@ const Group = () => {
                         <Modal
                             trigger={
                                 <IconButton variant="ghost" icon={{ name: "pencil" }} disabled={isLoading}>
-                                    <span>Edit</span>
+                                    <span className="hidden sm:block">Edit</span>
                                 </IconButton>
                             }
                             title="Edit Group"
@@ -146,7 +146,7 @@ const Group = () => {
                         <Modal
                             trigger={
                                 <IconButton variant="error-ghost" icon={{ name: "trash" }} disabled={isLoading}>
-                                    <span>Delete</span>
+                                    <span className="hidden sm:block">Delete</span>
                                 </IconButton>
                             }
                             title="Delete Group"
@@ -191,10 +191,12 @@ const Group = () => {
             ) : (
                 <>
                     {/* GROUP TITLE */}
-                    <h1 className="font-medium text-4xl mb-4">{group?.title}</h1>
+                    <h1 className="font-medium text-4xl mb-4 wrap-break-word">{group?.title}</h1>
 
                     {/* GROUP DESCRIPTION */}
-                    <p className="text-foreground-secondary">{group?.description ?? <i>No description</i>}</p>
+                    <p className="text-foreground-secondary whitespace-pre-wrap">
+                        {group?.description ?? <i>No description</i>}
+                    </p>
 
                     <br />
 
