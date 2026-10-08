@@ -28,19 +28,20 @@ const ToolBar = ({
     if (disabled) return <></>;
 
     return (
-        <div className={`flex items-center rounded-md shadow-md h-6 ${className}`}>
+        <div className={`flex items-center rounded-md shadow-md h-8 ${className}`}>
             {actions.map((action, index, arr) => {
                 let rounded = "";
 
-                if (arr.length === 1) rounded = "rounded-sm";
-                else if (index === 0) rounded = "rounded-s-sm";
-                else if (index === arr.length - 1) rounded = "rounded-e-sm";
+                if (arr.length === 1) rounded = "rounded-t-sm";
+                else if (index === 0) rounded = "rounded-tl-sm";
+                else if (index === arr.length - 1) rounded = "rounded-tr-sm";
 
                 return (
                     <div
                         key={index}
                         className={
-                            "h-full bg-background-2 hover:bg-foreground-muted text-xs px-2 py-1 border border-foreground-muted/50 flex items-center justify-center gap-1 cursor-pointer " +
+                            "h-full text-xs px-2.5 py-1 flex items-center justify-center gap-1 cursor-pointer " +
+                            "bg-background-2 hover:bg-foreground-muted border border-foreground-muted/50 " +
                             rounded
                         }
                         onClick={action.onClick}
@@ -194,7 +195,7 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3">
+            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3 z-10">
                 <div className="flex flex-row items-center gap-4">
                     {isLoading || isCreating || isUpdating ? (
                         <div>
@@ -248,12 +249,12 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
                         disabled={isCreating || isUpdating}
                     />
                     <FieldLabel className="mb-4">Note Content</FieldLabel>
-                    <div className="space-y-8">
+                    <div className="space-y-10">
                         {contentList.map((content, index) => {
                             return (
                                 <div key={content.id} className="relative">
                                     <ToolBar
-                                        className="absolute -top-3 right-0 mx-4"
+                                        className="absolute top-0 -translate-y-full right-0"
                                         disabled={isCreating || isUpdating}
                                         actions={[
                                             {
@@ -275,7 +276,7 @@ const NoteEditor = ({ id }: { id: string | undefined }) => {
                                     />
                                     <TextBlock
                                         id={`${content.id}`}
-                                        className="w-full"
+                                        className="w-full rounded-tr-none"
                                         value={content.text}
                                         onChange={(e) => updateContent(index, e.target.value)}
                                         disabled={isCreating || isUpdating}

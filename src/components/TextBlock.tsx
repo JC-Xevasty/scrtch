@@ -12,9 +12,9 @@ const BASESTYLES =
     "outline-none focus:ring-0 focus:ring-accent focus:border-accent transition-all ";
 
 const SIZES = {
-    sm: "text-xs px-4 py-1.5",
-    md: "text-sm px-4 py-2",
-    lg: "text-base px-4 py-2.5",
+    sm: "text-xs px-4 py-4 sm:py-1.5",
+    md: "text-sm px-4 py-4 sm:py-2",
+    lg: "text-base px-4 py-4 sm:py-2.5",
 };
 
 const TextBlock = ({

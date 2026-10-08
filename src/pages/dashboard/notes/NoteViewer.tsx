@@ -54,14 +54,14 @@ const NoteViewer = ({ id }: { id: string | undefined }) => {
                     <div className="flex flex-row items-center gap-4">
                         <Link to={`/notes/${id}/edit`} state={location.state}>
                             <IconButton variant="ghost" icon={{ name: "pencil" }} disabled={isLoading}>
-                                <span>Edit</span>
+                                <span className="hidden sm:block">Edit</span>
                             </IconButton>
                         </Link>
 
                         <Modal
                             trigger={
                                 <IconButton variant="error-ghost" icon={{ name: "trash" }} disabled={isLoading}>
-                                    <span>Delete</span>
+                                    <span className="hidden sm:block">Delete</span>
                                 </IconButton>
                             }
                             title="Delete Note?"
@@ -92,7 +92,7 @@ const NoteViewer = ({ id }: { id: string | undefined }) => {
             ) : (
                 <>
                     {/* NOTE TITLE */}
-                    <h1 className="font-medium text-4xl mb-4">{note?.title}</h1>
+                    <h1 className="font-medium text-4xl mb-4 wrap-break-word">{note?.title}</h1>
 
                     {/* NOTE GROUP */}
                     <div className="flex flex-row justify-between max-w-full">
