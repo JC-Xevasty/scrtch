@@ -28,25 +28,26 @@ const ToolBar = ({
     if (disabled) return <></>;
 
     return (
-        <div className={`flex items-center rounded-md shadow-md h-6 ${className} select-none`}>
+        <div className={`flex items-center shadow-md h-8 select-none ${className}`}>
             {actions.map((action, index, arr) => {
                 let rounded = "";
 
-                if (arr.length === 1) rounded = "rounded-sm";
-                else if (index === 0) rounded = "rounded-s-sm";
-                else if (index === arr.length - 1) rounded = "rounded-e-sm";
+                if (arr.length === 1) rounded = "rounded-t-sm";
+                else if (index === 0) rounded = "rounded-tl-sm";
+                else if (index === arr.length - 1) rounded = "rounded-tr-sm";
 
                 return (
                     <div
                         key={index}
                         className={
-                            "h-full bg-background-2 hover:bg-foreground-muted text-xs px-2 py-1 border border-foreground-muted/50 flex items-center justify-center gap-1 cursor-pointer " +
+                            "h-full text-xs px-2.5 py-1 flex items-center justify-center gap-1 cursor-pointer " +
+                            "bg-background-2 hover:bg-foreground-muted border border-foreground-muted/50 " +
                             rounded
                         }
                         onClick={action.onClick}
                     >
-                        <Icon name={action.icon} size={16} />
-                        <span>{action.label}</span>
+                        <Icon name={action.icon} size={16} className="shrink-0" />
+                        <span className="whitespace-nowrap">{action.label}</span>
                     </div>
                 );
             })}
@@ -100,42 +101,44 @@ const ListEditorItem = ({
                         <Icon name="chevron-down" />
                     </div>
                 </div>
-                <ToolBar
-                    className="absolute -top-3 right-0 mx-4"
-                    disabled={disabled}
-                    actions={[
-                        {
-                            label: "Top",
-                            icon: "plus",
-                            onClick: () => handleAddItem(index),
-                        },
-                        {
-                            label: "Bottom",
-                            icon: "plus",
-                            onClick: () => handleAddItem(index + 1),
-                        },
-                        {
-                            label: showContent ? "Remove Content" : "Add Content",
-                            icon: showContent ? "chevrons-northwest" : "chevrons-southeast",
-                            onClick: () => {
-                                if (!showContent) {
-                                    setShowContent(true);
-                                } else {
-                                    setShowContent(false);
-                                    handleUpdateItem(index, "content", "");
-                                }
+                <div className="absolute top-0 -translate-y-full right-0 max-w-full pl-10">
+                    <ToolBar
+                        className="overflow-x-auto"
+                        disabled={disabled}
+                        actions={[
+                            {
+                                label: "Top",
+                                icon: "plus",
+                                onClick: () => handleAddItem(index),
                             },
-                        },
-                        {
-                            label: "Remove",
-                            icon: "trash",
-                            onClick: () => handleRemoveItem(index),
-                        },
-                    ]}
-                />
+                            {
+                                label: "Bottom",
+                                icon: "plus",
+                                onClick: () => handleAddItem(index + 1),
+                            },
+                            {
+                                label: showContent ? "Remove Content" : "Add Content",
+                                icon: showContent ? "chevrons-northwest" : "chevrons-southeast",
+                                onClick: () => {
+                                    if (!showContent) {
+                                        setShowContent(true);
+                                    } else {
+                                        setShowContent(false);
+                                        handleUpdateItem(index, "content", "");
+                                    }
+                                },
+                            },
+                            {
+                                label: "Remove",
+                                icon: "trash",
+                                onClick: () => handleRemoveItem(index),
+                            },
+                        ]}
+                    />
+                </div>
                 <TextBlock
                     id={`title-${id}`}
-                    className="grow py-4 flex items-center"
+                    className="grow py-4 flex items-center rounded-tr-none"
                     value={title}
                     onChange={(e) => handleUpdateItem(index, "title", e.target.value)}
                     disabled={disabled}
@@ -146,7 +149,7 @@ const ListEditorItem = ({
                 <div className="flex items-center mt-4">
                     <TextBlock
                         id={`content-${id}`}
-                        className="grow bg-background-3 border border-white/20 shadow-sm rounded-md py-4 ml-16"
+                        className="grow bg-background-3 border border-white/20 shadow-sm rounded-md py-4 ml-12 sm:ml-16"
                         value={content}
                         onChange={(e) => handleUpdateItem(index, "content", e.target.value)}
                         disabled={disabled}
@@ -455,8 +458,8 @@ const ListEditor = ({ id }: { id: string | undefined }) => {
                         </TextButton>
                     </div>
 
-                    <FieldLabel className="mb-4">List Items</FieldLabel>
-                    <div className="space-y-8 my-4 py-4 text-sm">
+                    <FieldLabel className="mb-8 md:mb-4">List Items</FieldLabel>
+                    <div className="space-y-14 my-4 py-4 text-sm">
                         {listItems.map((listItem, index) => {
                             return (
                                 <div key={listItem.id}>

@@ -105,14 +105,14 @@ const ListViewer = ({ id }: { id: string | undefined }) => {
                     <div className="flex flex-row items-center gap-4">
                         <Link to={`/lists/${id}/edit`} state={location.state}>
                             <IconButton variant="ghost" icon={{ name: "pencil" }} disabled={isLoading}>
-                                <span>Edit</span>
+                                <span className="hidden sm:block">Edit</span>
                             </IconButton>
                         </Link>
 
                         <Modal
                             trigger={
                                 <IconButton variant="error-ghost" icon={{ name: "trash" }} disabled={isLoading}>
-                                    <span>Delete</span>
+                                    <span className="hidden sm:block">Delete</span>
                                 </IconButton>
                             }
                             title="Delete List?"
@@ -142,7 +142,7 @@ const ListViewer = ({ id }: { id: string | undefined }) => {
             ) : (
                 <>
                     {/* LIST TITLE */}
-                    <h1 className="font-medium text-4xl mb-4">{list?.title}</h1>
+                    <h1 className="font-medium text-4xl mb-4 wrap-break-word">{list?.title}</h1>
 
                     {/* LIST GROUP */}
                     <div className="flex flex-row justify-between max-w-full">

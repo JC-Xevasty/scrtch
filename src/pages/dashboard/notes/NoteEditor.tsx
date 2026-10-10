@@ -28,7 +28,7 @@ const ToolBar = ({
     if (disabled) return <></>;
 
     return (
-        <div className={`flex items-center rounded-md shadow-md h-8 ${className}`}>
+        <div className={`flex items-center rounded-md shadow-md h-8 select-none ${className}`}>
             {actions.map((action, index, arr) => {
                 let rounded = "";
 
@@ -46,8 +46,8 @@ const ToolBar = ({
                         }
                         onClick={action.onClick}
                     >
-                        <Icon name={action.icon} size={16} />
-                        <span>{action.label}</span>
+                        <Icon name={action.icon} size={16} className="shrink-0" />
+                        <span className="whitespace-nowrap">{action.label}</span>
                     </div>
                 );
             })}
