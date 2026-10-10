@@ -6,6 +6,7 @@ import TextInput from "../../../components/TextInput";
 import TextButton from "../../../components/TextButton";
 import Dropdown from "../../../components/Dropdown";
 import Modal from "../../../components/Modal";
+import Divider from "../../../components/Divider";
 
 import { type User } from "@supabase/supabase-js";
 
@@ -244,7 +245,7 @@ const AccountSettings = () => {
 
             <h2 className="font-medium text-2xl my-4">Profile</h2>
             <div className="border border-foreground-muted/50 p-4 rounded mb-8">
-                <div className="flex gap-4 mb-8">
+                <div className="flex flex-col md:flex-row gap-4 mb-8">
                     <div className="flex-1">
                         <p className="font-medium text-sm">Email Address</p>
                         <p className="text-sm text-foreground-secondary">
@@ -262,7 +263,7 @@ const AccountSettings = () => {
                             </>
                         )}
                     </div>
-                    <form onSubmit={handleUpdateEmail} className="flex-1 flex flex-col items-stretch">
+                    <form onSubmit={handleUpdateEmail} className="flex-1 flex flex-col items-start md:items-stretch">
                         <FieldLabel htmlFor="new_email" className="mb-4">
                             New Email Address
                         </FieldLabel>
@@ -278,15 +279,18 @@ const AccountSettings = () => {
                         />
                         <TextButton
                             type="submit"
-                            className="ml-auto mt-4"
+                            className="mml-0 md:ml-auto mt-4"
                             disabled={newEmailField.trim().length === 0 || loading}
                         >
                             Update Email
                         </TextButton>
                     </form>
                 </div>
+
+                <Divider className="-mx-4" space="my-4" />
+
                 {/* PASSWORD */}
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1 text-sm">
                         <p className="font-medium">Password</p>
                         <p className="text-foreground-secondary">Password Requirements</p>
@@ -297,7 +301,7 @@ const AccountSettings = () => {
                             <li>Must contain at least one uppercase letter.</li>
                         </ul>
                     </div>
-                    <form onSubmit={handleUpdatePassword} className="flex-1 flex flex-col items-stretch">
+                    <form onSubmit={handleUpdatePassword} className="flex-1 flex flex-col items-start md:items-stretch">
                         <FieldLabel htmlFor="current_password" className="mb-4">
                             Current Password
                         </FieldLabel>
@@ -343,7 +347,7 @@ const AccountSettings = () => {
 
                         <TextButton
                             type="submit"
-                            className="ml-auto mt-4"
+                            className="ml-0 md:ml-auto mt-4"
                             disabled={
                                 Object.values(passwordFormData).every((val) => val.trim().length === 0) || loading
                             }
@@ -440,14 +444,14 @@ const AccountSettings = () => {
 
             <h2 className="font-medium text-2xl my-4">Danger Zone</h2>
             <div className="border border-error/60 p-4 rounded mb-8">
-                <div className="flex gap-4 mb-8">
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1 shrink-0">
                         <p className="font-medium text-sm">Default User Content</p>
                         <span className="text-foreground-secondary text-sm">
                             Permanently delete all your notes, lists, logs, links, and groups.
                         </span>
                     </div>
-                    <div className="flex-1 min-w-0 shrink-0 flex justify-end">
+                    <div className="flex-1 min-w-0 shrink-0 flex justify-start md:justify-end">
                         <TextButton
                             variant="error-ghost"
                             className="h-fit"
@@ -458,14 +462,16 @@ const AccountSettings = () => {
                     </div>
                 </div>
 
-                <div className="flex gap-4">
+                <Divider className="-mx-4" space="my-4" />
+
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1 shrink-0">
                         <p className="font-medium text-sm">Delete Account</p>
                         <span className="text-foreground-secondary text-sm">
                             Permanently delete your SCRTCH account and data.
                         </span>
                     </div>
-                    <div className="flex-1 min-w-0 shrink-0 flex justify-end">
+                    <div className="flex-1 min-w-0 shrink-0 flex justify-start md:justify-end">
                         <TextButton
                             variant="error"
                             className="h-fit"
