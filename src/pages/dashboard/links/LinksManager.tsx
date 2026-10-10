@@ -306,20 +306,22 @@ const LinksManager = () => {
             <br />
 
             {/* BREADCRUMBS */}
-            <div className="flex items-center gap-2 select-none flex-wrap">
+            <div className="break-all space-x-2">
                 {breadcrumbs.map((breadcrumb, index) => {
                     return (
                         <React.Fragment key={index}>
-                            {index !== 0 && <Icon name="chevron-right" size={14} />}
-                            <p
+                            {index !== 0 && (
+                                <Icon name="chevron-right" size={14} className="inline-block shrink-0 my-2" />
+                            )}
+                            <span
                                 className={
-                                    "cursor-pointer hover:text-accent " +
+                                    "cursor-pointer hover:text-accent leading-6 " +
                                     (currentFolder?.id === breadcrumb.id ? "font-normal" : "text-foreground-secondary")
                                 }
                                 onClick={() => navigateToFolder(breadcrumb.id)}
                             >
                                 {breadcrumb.title}
-                            </p>
+                            </span>
                         </React.Fragment>
                     );
                 })}
