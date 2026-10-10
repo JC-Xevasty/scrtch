@@ -30,25 +30,26 @@ const ToolBar = ({
     if (disabled) return <></>;
 
     return (
-        <div className={`flex items-center rounded-md shadow-md h-6 ${className} select-none`}>
+        <div className={`flex items-center shadow-md h-8 select-none ${className} `}>
             {actions.map((action, index, arr) => {
                 let rounded = "";
 
-                if (arr.length === 1) rounded = "rounded-sm";
-                else if (index === 0) rounded = "rounded-s-sm";
-                else if (index === arr.length - 1) rounded = "rounded-e-sm";
+                if (arr.length === 1) rounded = "rounded-t-sm";
+                else if (index === 0) rounded = "rounded-tl-sm";
+                else if (index === arr.length - 1) rounded = "rounded-tr-sm";
 
                 return (
                     <div
                         key={index}
                         className={
-                            "h-full bg-background-2 hover:bg-foreground-muted text-xs px-2 py-1 border border-foreground-muted/50 flex items-center justify-center gap-1 cursor-pointer " +
+                            "h-full text-xs px-2.5 py-1 flex items-center justify-center gap-1 cursor-pointer " +
+                            "bg-background-2 hover:bg-foreground-muted border border-foreground-muted/50 " +
                             rounded
                         }
                         onClick={action.onClick}
                     >
-                        <Icon name={action.icon} size={16} />
-                        <span>{action.label}</span>
+                        <Icon name={action.icon} size={16} className="shrink-0" />
+                        <span className="whitespace-nowrap">{action.label}</span>
                     </div>
                 );
             })}
@@ -119,7 +120,7 @@ const LogEditorItem = ({
             </div>
             <div className="flex gap-4 relative">
                 <ToolBar
-                    className="absolute -top-3 right-0 mx-4"
+                    className="absolute top-0 -translate-y-full right-0"
                     disabled={disabled}
                     actions={[
                         {
@@ -142,7 +143,7 @@ const LogEditorItem = ({
                     ]}
                 />
                 <TextBlock
-                    className="grow py-4 flex items-center"
+                    className="grow py-4 flex items-center rounded-tr-none"
                     value={title}
                     onChange={(e) => handleUpdateItem(index, "title", e.target.value)}
                     disabled={disabled}
@@ -150,7 +151,7 @@ const LogEditorItem = ({
             </div>
 
             {showContent && (
-                <div className="flex items-center mt-4 ml-16">
+                <div className="flex items-center mt-4 ml-8 sm:ml-16">
                     <TextBlock
                         className="grow bg-background-3 border border-white/20 shadow-sm rounded-md py-4"
                         value={content}

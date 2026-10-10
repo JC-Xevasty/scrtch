@@ -50,7 +50,7 @@ const LogItem = ({ title, content, entry_date }: Pick<LogItem, "title" | "conten
             {hasContent && showContent && (
                 <>
                     <div className="flex items-stretch gap-2 mt-4">
-                        <div className="relative shrink-0 w-10 ml-3">
+                        <div className="relative shrink-0 w-8 sm:w-10 ml-3">
                             <div
                                 className="border-l-2 border-b-2 border-background-3 rounded-bl-md w-full h-1/2 hover:border-background-2 cursor-pointer"
                                 onClick={() => setShowContent((prev) => !prev)}
@@ -109,14 +109,14 @@ const LogViewer = ({ id }: { id: string | undefined }) => {
                     <div className="flex flex-row items-center gap-4">
                         <Link to={`/logs/${id}/edit`} state={location.state}>
                             <IconButton variant="ghost" icon={{ name: "pencil" }} disabled={isLoading}>
-                                <span>Edit</span>
+                                <span className="hidden sm:block">Edit</span>
                             </IconButton>
                         </Link>
 
                         <Modal
                             trigger={
                                 <IconButton variant="error-ghost" icon={{ name: "trash" }} disabled={isLoading}>
-                                    <span>Delete</span>
+                                    <span className="hidden sm:block">Delete</span>
                                 </IconButton>
                             }
                             title="Delete Log?"
@@ -146,7 +146,7 @@ const LogViewer = ({ id }: { id: string | undefined }) => {
             ) : (
                 <>
                     {/* LOG TITLE */}
-                    <h1 className="font-medium text-4xl mb-4">{log?.title}</h1>
+                    <h1 className="font-medium text-4xl mb-4 wrap-break-word">{log?.title}</h1>
 
                     {/* LOG GROUP */}
                     <div className="flex flex-row justify-between max-w-full">
