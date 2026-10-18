@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Icon from "../../../components/Icon";
@@ -13,27 +13,64 @@ import { useToast } from "../../../context/toast/ToastContext";
 import { useList, useListMutation } from "../../../hooks/dashboard/useLists";
 
 const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListType } & ListItem) => {
+    const contentIconRef = useRef<HTMLDivElement>(null);
     const [showContent, setShowContent] = useState(false);
 
     const hasContent = content.length > 0;
+
+    const handleShowContent = () => {
+        if (!showContent) return;
+
+        const icon = contentIconRef.current;
+        const contentWrapper = document.getElementById("dashboard-content");
+        if (!icon || !contentWrapper) return;
+
+        const iconRect = icon.getBoundingClientRect();
+        const contentRect = contentWrapper.getBoundingClientRect();
+
+        // Only scroll if the icon is above the visible viewport.
+        if (iconRect.top < contentRect.top + 80) {
+            // Current vertical scroll distance inside the container
+            const contentWrapperScrollTop = contentWrapper.scrollTop;
+
+            // Icon's top value relative to the browser viewport
+            const iconRectTop = iconRect.top;
+            // Scrollable container's top value relative to the browser viewport (i.e. header height)
+            const contentRectTop = contentRect.top;
+            // Position of the icon relative to the visible top edge of the scrollable container
+            const relativeIconTop = iconRectTop - contentRectTop;
+
+            // Desired offset (in pixels) from the top edge of the container
+            const targetDistanceFromTop = 80;
+
+            const finalPosition = contentWrapperScrollTop + relativeIconTop - targetDistanceFromTop;
+            contentWrapper?.scrollTo({ top: finalPosition, behavior: "smooth" });
+        }
+
+        setShowContent(false);
+    };
 
     return (
         <>
             <div className="flex gap-4">
                 <div className="flex flex-col justify-between items-center w-6">
-                    <div className="font-semibold text-md bg-background-3 p-1 h-6 w-6 rounded-md flex items-center justify-center select-none">
+                    <div className="font-semibold text-md bg-background-3 p-1 size-6 rounded-md flex items-center justify-center select-none">
                         {list_type === "ordered" && <>{item_order}</>}
                         {list_type === "unordered" && <>•</>}
                     </div>
                     {hasContent && (
                         <div
-                            className="cursor-pointer mb-1 select-none"
+                            ref={contentIconRef}
+                            className={
+                                "group flex items-center justify-center size-6 p-1 " +
+                                "border border-foreground hover:border-foreground-secondary rounded-md cursor-pointer select-none "
+                            }
                             onClick={() => setShowContent((prev) => !prev)}
                             title={showContent ? "hide content" : "show content"}
                         >
                             <Icon
                                 name={`chevrons-${showContent ? "northwest" : "southeast"}`}
-                                className="hover:text-foreground-secondary"
+                                className="group-hover:text-foreground-secondary size-4"
                                 size={16}
                             />
                         </div>
@@ -46,10 +83,10 @@ const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListT
             {hasContent && showContent && (
                 <>
                     <div className="flex items-stretch gap-2 mt-4">
-                        <div className="relative shrink-0 w-10 ml-3">
+                        <div className="relative shrink-0 w-10 ml-3 mb-8 -mt-4">
                             <div
-                                className="border-l-2 border-b-2 border-background-3 rounded-bl-md w-full h-1/2 hover:border-background-2 cursor-pointer"
-                                onClick={() => setShowContent((prev) => !prev)}
+                                className="sticky top-14 border-l-2 border-b-2 border-background-3 rounded-bl-md w-full h-12 hover:border-background-2 cursor-pointer"
+                                onClick={handleShowContent}
                             />
                         </div>
                         <div className="grow min-w-0 bg-background-3 border border-white/20 shadow-sm rounded-md p-4 whitespace-pre-wrap wrap-break-word">
@@ -94,7 +131,7 @@ const ListViewer = ({ id }: { id: string | undefined }) => {
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3">
+            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3 z-10">
                 <div className="flex flex-row items-center gap-4">
                     <Link to={location.state?.from ?? "/lists"}>
                         <Icon name="arrow-left " />
