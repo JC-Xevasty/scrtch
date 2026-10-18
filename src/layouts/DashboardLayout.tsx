@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                 {/* SIDEBAR */}
                 <div
                     className={
-                        "sidebar bg-background-0 h-full absolute sm:relative left-0 top-0 z-10 " +
+                        "sidebar bg-background-0 h-full absolute sm:relative left-0 top-0 z-20 " +
                         "border-r border-background-3 shadow-lg " +
                         "duration-300 ease-in-out sm:translate-x-0 " +
                         (mobileSidebarOpen ? "translate-x-0" : "-translate-x-full")

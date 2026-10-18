@@ -281,7 +281,7 @@ const LinksManager = () => {
 
     return (
         <div>
-            <div className="flex flex-row justify-between items-center py-8 -mt-4 sticky -top-4 bg-background-0 border-b-2 border-background-3">
+            <div className="flex flex-row justify-between items-center py-8 -mt-4 -mx-2 px-2 sticky -top-4 bg-background-0 border-b-2 border-background-3">
                 <h1 className="font-medium">
                     <span className="text-4xl align-middle mr-4 uppercase">Links</span>
                 </h1>

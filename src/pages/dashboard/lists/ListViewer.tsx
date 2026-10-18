@@ -62,7 +62,7 @@ const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListT
                         <div
                             ref={contentIconRef}
                             className={
-                                "group flex items-center justify-center size-6 p-1 " +
+                                "group flex items-center justify-center size-6 p-1 mt-1 " +
                                 "border border-foreground hover:border-foreground-secondary rounded-md cursor-pointer select-none "
                             }
                             onClick={() => setShowContent((prev) => !prev)}
@@ -131,7 +131,7 @@ const ListViewer = ({ id }: { id: string | undefined }) => {
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 sticky -top-4 bg-background-0 border-b-2 border-background-3 z-10">
+            <div className="flex flex-row items-center justify-between py-4 -mt-4 mb-4 -mx-2 px-2 sticky -top-4 bg-background-0 border-b-2 border-background-3 z-10">
                 <div className="flex flex-row items-center gap-4">
                     <Link to={location.state?.from ?? "/lists"}>
                         <Icon name="arrow-left " />
