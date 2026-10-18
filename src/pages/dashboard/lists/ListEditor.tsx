@@ -61,6 +61,8 @@ const ListEditorItem = ({
     title = "",
     content = "",
     disabled = false,
+    allowMoveUp = true,
+    allowMoveDown = true,
     handleAddItem,
     handleRemoveItem,
     handleChangeOrder,
@@ -71,6 +73,8 @@ const ListEditorItem = ({
     title: string;
     content: string;
     disabled: boolean;
+    allowMoveUp: boolean;
+    allowMoveDown: boolean;
     handleAddItem: (index: number) => void;
     handleRemoveItem: (index: number) => void;
     handleChangeOrder: (prevIndex: number, newIndex: number) => void;
@@ -85,18 +89,22 @@ const ListEditorItem = ({
                     <div
                         className={
                             "bg-background-2 p-1 h-6 w-6 rounded-md flex items-center justify-center select-none " +
-                            (disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-foreground-muted")
+                            (disabled || !allowMoveUp
+                                ? "cursor-not-allowed opacity-30"
+                                : "cursor-pointer hover:bg-foreground-muted")
                         }
-                        onClick={disabled ? undefined : () => handleChangeOrder(index, index - 1)}
+                        onClick={disabled || !allowMoveUp ? undefined : () => handleChangeOrder(index, index - 1)}
                     >
                         <Icon name="chevron-up" />
                     </div>
                     <div
                         className={
                             "bg-background-2 p-1 h-6 w-6 rounded-md flex items-center justify-center select-none " +
-                            (disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-foreground-muted")
+                            (disabled || !allowMoveDown
+                                ? "cursor-not-allowed opacity-30"
+                                : "cursor-pointer hover:bg-foreground-muted")
                         }
-                        onClick={disabled ? undefined : () => handleChangeOrder(index, index + 1)}
+                        onClick={disabled || !allowMoveDown ? undefined : () => handleChangeOrder(index, index + 1)}
                     >
                         <Icon name="chevron-down" />
                     </div>
@@ -467,6 +475,8 @@ const ListEditor = ({ id }: { id: string | undefined }) => {
                                         index={index}
                                         {...listItem}
                                         disabled={isCreating || isUpdating}
+                                        allowMoveUp={index > 0}
+                                        allowMoveDown={index < listItems.length - 1}
                                         handleAddItem={handleAddItem}
                                         handleRemoveItem={handleRemoveItem}
                                         handleUpdateItem={updateListItem}
