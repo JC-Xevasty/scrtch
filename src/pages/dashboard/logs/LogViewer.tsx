@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Modal from "../../../components/Modal";
+import FieldLabel from "../../../components/FieldLabel";
 
 import GroupSelector from "../../../components/dashboard/GroupSelector";
 
@@ -165,7 +166,39 @@ const LogViewer = ({ id }: { id: string | undefined }) => {
                         >
                             <p>Are you sure you want to delete this log? This cannot be undone.</p>
                         </Modal>
-                        <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                        <Modal
+                            trigger={
+                                <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                            }
+                            title="Log Information"
+                            showActions={false}
+                        >
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Date Created</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(log.created_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                </p>
+                            </div>
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Last Updated</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(log.updated_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                    {DateFormat.relativeDate(log.updated_at, "diff") < "604800000" && (
+                                        <span className="italic text-foreground-secondary">
+                                            &nbsp;({DateFormat.relativeDate(log.updated_at)})
+                                        </span>
+                                    )}
+                                </p>
+                            </div>
+                            <FieldLabel className="ml-0! mb-2">Number of Entries</FieldLabel>
+                            <p>{logItems.length}</p>
+                        </Modal>
                     </div>
                 )}
             </div>

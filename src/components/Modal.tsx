@@ -18,6 +18,7 @@ export interface ModalProps {
     modalPosition?: string;
     title?: string;
     children?: ReactNode;
+    showActions?: boolean;
     confirmAction?: ModalAction;
     cancelAction?: ModalAction;
     onConfirm?: () => void | Promise<void>;
@@ -30,6 +31,7 @@ const Modal = ({
     trigger,
     modalPosition = "fixed inset-0",
     title = "Modal Title",
+    showActions = true,
     confirmAction = {
         text: "Confirm",
     },
@@ -145,19 +147,29 @@ const Modal = ({
                             <div className="modal-content py-2 px-4 -mx-4 text-sm overflow-y-auto max-h-[60vh]">
                                 {children}
                             </div>
-                            <Divider className="-mx-4" />
-                            <div className="modal-footer flex items-center justify-end gap-4 pt-2">
-                                <div onClick={handleCancel}>
-                                    <TextButton {...cancelAction} disabled={cancelAction.disabled || isModalLoading}>
-                                        {cancelAction.text}
-                                    </TextButton>
-                                </div>
-                                <div onClick={handleConfirm}>
-                                    <TextButton {...confirmAction} disabled={confirmAction.disabled || isModalLoading}>
-                                        {confirmAction.text}
-                                    </TextButton>
-                                </div>
-                            </div>
+                            {showActions && (
+                                <>
+                                    <Divider className="-mx-4" />
+                                    <div className="modal-footer flex items-center justify-end gap-4 pt-2">
+                                        <div onClick={handleCancel}>
+                                            <TextButton
+                                                {...cancelAction}
+                                                disabled={cancelAction.disabled || isModalLoading}
+                                            >
+                                                {cancelAction.text}
+                                            </TextButton>
+                                        </div>
+                                        <div onClick={handleConfirm}>
+                                            <TextButton
+                                                {...confirmAction}
+                                                disabled={confirmAction.disabled || isModalLoading}
+                                            >
+                                                {confirmAction.text}
+                                            </TextButton>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>,
                     document.getElementById("dashboard-content") ??

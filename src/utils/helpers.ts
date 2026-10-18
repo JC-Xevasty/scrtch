@@ -6,11 +6,13 @@ const DAY = 24 * HOUR;
 const WEEK = 7 * DAY;
 
 export const DateFormat = {
-    relativeDate: (dateString: string) => {
+    relativeDate: (dateString: string, result: "date" | "diff" = "date") => {
         const date = new Date(dateString);
         const now = new Date();
 
         const diffInMilliseconds = Math.max(0, now.getTime() - date.getTime());
+
+        if (result === "diff") return diffInMilliseconds;
 
         // Less than a minute
         if (diffInMilliseconds < MINUTE) {

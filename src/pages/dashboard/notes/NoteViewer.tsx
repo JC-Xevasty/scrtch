@@ -5,11 +5,14 @@ import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Divider from "../../../components/Divider";
 import Modal from "../../../components/Modal";
+import FieldLabel from "../../../components/FieldLabel";
 
 import GroupSelector from "../../../components/dashboard/GroupSelector";
 
 import { useToast } from "../../../context/toast/ToastContext";
 import { useNote, useNoteMutation } from "../../../hooks/dashboard/useNotes";
+
+import { DateFormat } from "../../../utils/helpers";
 
 const NoteViewer = ({ id }: { id: string | undefined }) => {
     const navigate = useNavigate();
@@ -74,7 +77,35 @@ const NoteViewer = ({ id }: { id: string | undefined }) => {
                         >
                             <p>Are you sure you want to delete this note? This cannot be undone.</p>
                         </Modal>
-                        <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                        <Modal
+                            trigger={
+                                <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                            }
+                            title="Note Information"
+                            showActions={false}
+                        >
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Date Created</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(note.created_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                </p>
+                            </div>
+                            <FieldLabel className="ml-0! mb-2">Last Updated</FieldLabel>
+                            <p>
+                                {DateFormat.localString(note.updated_at, undefined, {
+                                    dateStyle: "long",
+                                    timeStyle: "short",
+                                })}
+                                {DateFormat.relativeDate(note.updated_at, "diff") < "604800000" && (
+                                    <span className="italic text-foreground-secondary">
+                                        &nbsp;({DateFormat.relativeDate(note.updated_at)})
+                                    </span>
+                                )}
+                            </p>
+                        </Modal>
                     </div>
                 )}
             </div>

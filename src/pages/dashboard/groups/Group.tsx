@@ -16,6 +16,8 @@ import type { GroupDelete, GroupUpdate } from "../../../types";
 import { useToast } from "../../../context/toast/ToastContext";
 import { useGroup, useGroupMutation } from "../../../hooks/dashboard/useGroups";
 
+import { DateFormat } from "../../../utils/helpers";
+
 const DELETENORMAL = false;
 const DELETECASCADE = true;
 
@@ -173,7 +175,39 @@ const Group = () => {
                                 )}
                             </div>
                         </Modal>
-                        <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                        <Modal
+                            trigger={
+                                <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                            }
+                            title="Group Information"
+                            showActions={false}
+                        >
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Date Created</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(group.created_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                </p>
+                            </div>
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Last Updated</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(group.updated_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                    {DateFormat.relativeDate(group.updated_at, "diff") < "604800000" && (
+                                        <span className="italic text-foreground-secondary">
+                                            &nbsp;({DateFormat.relativeDate(group.updated_at)})
+                                        </span>
+                                    )}
+                                </p>
+                            </div>
+                            <FieldLabel className="ml-0! mb-2">Number of Content</FieldLabel>
+                            <p>{group.content.length}</p>
+                        </Modal>
                     </div>
                 )}
             </div>

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Icon from "../../../components/Icon";
 import IconButton from "../../../components/IconButton";
 import Modal from "../../../components/Modal";
+import FieldLabel from "../../../components/FieldLabel";
 
 import GroupSelector from "../../../components/dashboard/GroupSelector";
 
@@ -11,6 +12,8 @@ import type { ListItem, ListType } from "../../../types";
 
 import { useToast } from "../../../context/toast/ToastContext";
 import { useList, useListMutation } from "../../../hooks/dashboard/useLists";
+
+import { DateFormat } from "../../../utils/helpers";
 
 const ListItem = ({ list_type, title, content, item_order }: { list_type?: ListType } & ListItem) => {
     const contentIconRef = useRef<HTMLDivElement>(null);
@@ -161,7 +164,39 @@ const ListViewer = ({ id }: { id: string | undefined }) => {
                         >
                             <p>Are you sure you want to delete this list? This cannot be undone.</p>
                         </Modal>
-                        <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                        <Modal
+                            trigger={
+                                <IconButton variant="neutral-ghost" icon={{ name: "info" }} disabled={isLoading} />
+                            }
+                            title="List Information"
+                            showActions={false}
+                        >
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Date Created</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(list.created_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                </p>
+                            </div>
+                            <div className="mb-4">
+                                <FieldLabel className="ml-0! mb-2">Last Updated</FieldLabel>
+                                <p>
+                                    {DateFormat.localString(list.updated_at, undefined, {
+                                        dateStyle: "long",
+                                        timeStyle: "short",
+                                    })}
+                                    {DateFormat.relativeDate(list.updated_at, "diff") < "604800000" && (
+                                        <span className="italic text-foreground-secondary">
+                                            &nbsp;({DateFormat.relativeDate(list.updated_at)})
+                                        </span>
+                                    )}
+                                </p>
+                            </div>
+                            <FieldLabel className="ml-0! mb-2">Number of Items</FieldLabel>
+                            <p>{listItems.length}</p>
+                        </Modal>
                     </div>
                 )}
             </div>
